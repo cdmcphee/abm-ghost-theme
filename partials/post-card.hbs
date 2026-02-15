@@ -6,17 +6,20 @@
         <a class="post-permalink" href="{{url}}"></a>
         {{> "post-types/photo"}}
     </article>
-{{else if (has tag="#observation")}}
+{{else}}
+{{#has tag="#observation"}}
     <article class="post post-observation">
         <a class="post-permalink" href="{{url}}"></a>
         {{> "post-types/observation"}}
     </article>
-{{else if (has tag="#link")}}
+{{else}}
+{{#has tag="#link"}}
     <article class="post post-link">
         <a class="post-permalink" href="{{url}}"></a>
         {{> "post-types/link"}}
     </article>
-{{else if (has tag="#embed")}}
+{{else}}
+{{#has tag="#embed"}}
     <article class="post post-embed">
         <a class="post-permalink" href="{{url}}"></a>
         {{> "post-types/embed"}}
@@ -26,4 +29,7 @@
         <a class="post-permalink" href="{{url}}"></a>
         {{> "post-types/essay"}}
     </article>
+{{/has}}
+{{/has}}
+{{/has}}
 {{/has}}
