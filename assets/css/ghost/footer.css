@@ -1,57 +1,46 @@
-/* Global Footer
-/* ---------------------------------------------------------- */
+/* ============================================
+   A BROAD MARGIN — Site Footer
+   ============================================ */
 
-.gh-foot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8vmin 4vmin 4vmin;
-}
-
-.gh-foot .gh-container {
-    width: auto;
-}
-
-.gh-foot a {
-    color: inherit;
-}
-
-.gh-foot-menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.gh-foot-menu .nav {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-    font-size: 1.8rem;
-}
-
-.gh-foot-menu .nav li {
-    margin: 0 1.5vmin;
-    padding: 0;
-}
-
-.gh-foot-menu .nav a {
-    display: inline-block;
-    padding: 3px 0;
-    text-decoration: none;
-    box-shadow: 0 -1px 0 0 currentcolor inset;
-}
-
-.gh-foot-meta {
-    margin: 2rem 0;
-    font-size: 1.5rem;
+.site-footer {
+    max-width: var(--stream-width);
+    margin: 0 auto;
+    padding: 3rem 0 4rem;
+    border-top: 1px solid var(--rule);
     text-align: center;
-    opacity: 0.75;
 }
 
-@media (max-width: 700px) {
-    .gh-foot-menu .nav {
-        font-size: 1.6rem;
-    }
+.footer-hedera {
+    font-size: 1.4rem;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+}
+
+.footer-tagline {
+    font-family: var(--body);
+    font-size: 0.98rem;
+    font-style: italic;
+    color: var(--ink-medium);
+    margin-bottom: 1.8rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.footer-links a {
+    font-family: var(--ui);
+    font-size: 0.75rem;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--ink); }
+
+.footer-separator {
+    color: var(--ink-faint);
+    font-size: 0.7rem;
 }

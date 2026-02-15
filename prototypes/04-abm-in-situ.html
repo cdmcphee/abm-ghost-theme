@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Broad Margin — Prototype 04: In Situ Style Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper:        #faf7f2;
+            --paper-warm:   #f3efe8;
+            --ink:          #2c2820;
+            --ink-medium:   #5c564e;
+            --ink-light:    #8a847c;
+            --ink-faint:    #c4bfb8;
+            --rule:         #ddd8d0;
+            --accent:       #9b6a4a;
+            --accent-hover: #7a4f35;
+            --accent-bg:    rgba(155, 106, 74, 0.06);
+            --code-bg:      #f0ebe4;
+            --code-border:  #e0dbd3;
+
+            --display:  'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --body:     'Crimson Pro', Georgia, 'Times New Roman', serif;
+            --ui:       'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --mono:     'DM Mono', 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+
+            --content-width: 620px;
+            --margin-width: 72px;
+            --margin-gap: 1.5rem;
+            --stream-width: calc(var(--margin-width) + var(--margin-gap) + var(--content-width));
+            --wide-extend: calc(var(--margin-width) + var(--margin-gap));
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: clip;
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: var(--body);
+            line-height: 1.72;
+            padding: 0 1.5rem;
+        }
+
+        .site-header {
+            max-width: var(--stream-width);
+            margin: 0 auto;
+            padding: 3.5rem 0 2.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .site-title {
+            font-family: var(--display);
+            font-size: 1.45rem;
+            font-weight: 300;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .site-title:hover { color: var(--accent); }
+
+        .site-byline {
+            font-family: var(--ui);
+            font-size: 0.78rem;
+            font-weight: 400;
+            color: var(--ink-light);
+        }
+
+        .site-byline a {
+            color: var(--ink-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .site-byline a:hover { color: var(--ink); }
+
+        .stream { max-width: var(--stream-width); margin: 0 auto; }
+
+        .post {
+            padding: 2.8rem 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .post-header {
+            margin-left: calc(var(--margin-width) + var(--margin-gap));
+        }
+
+        .post-reading {
+            display: grid;
+            grid-template-columns: var(--margin-width) 1fr;
+            gap: 0 var(--margin-gap);
+            overflow: visible;
+        }
+
+        .post-body { overflow: visible; min-width: 0; }
+
+        .post-margin { padding-top: 0.62rem; }
+
+        .post-manicule {
+            font-size: 1.15rem;
+            line-height: 1;
+            color: var(--ink-light);
+            margin-bottom: -0.35rem;
+        }
+
+        .post-date {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            font-weight: 400;
+            color: var(--ink-light);
+            letter-spacing: 0.01em;
+            line-height: 1;
+        }
+
+        .post-essay .post-title {
+            font-family: var(--display);
+            font-size: 2.2rem;
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--ink);
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-essay .post-title a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .post-essay .post-title a:hover { color: var(--accent); }
+
+        /* ---- CONTENT ELEMENTS ---- */
+
+        .post-body p {
+            margin-bottom: 1.35rem;
+            font-size: 1.16rem;
+            line-height: 1.72;
+        }
+
+        .post-body p:last-child { margin-bottom: 0; }
+
+        .post-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: var(--ink-faint);
+            transition: text-decoration-color 0.2s;
+        }
+
+        .post-body a:hover { text-decoration-color: var(--accent); }
+
+        .post-body a.post-endmark {
+            color: var(--ink-faint);
+            text-decoration: none;
+            font-size: 0.8em;
+            margin-left: 0.25em;
+            vertical-align: 0.03em;
+            transition: color 0.2s;
+        }
+
+        .post-body a.post-endmark:hover { color: var(--accent); text-decoration: none; }
+
+        .post-body h2 {
+            font-family: var(--display);
+            font-size: 1.7rem;
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--ink);
+            margin: 2.8rem 0 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .post-body h3 {
+            font-family: var(--display);
+            font-size: 1.35rem;
+            font-weight: 300;
+            line-height: 1.25;
+            color: var(--ink);
+            margin: 2.2rem 0 0.8rem;
+        }
+
+        .post-body h4 {
+            font-family: var(--ui);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink-medium);
+            margin: 2rem 0 0.7rem;
+        }
+
+        .post-body h2:first-child, .post-body h3:first-child, .post-body h4:first-child { margin-top: 0; }
+
+        .post-body strong { font-weight: 600; }
+        .post-body em { font-style: italic; }
+        .post-body s { text-decoration: line-through; color: var(--ink-medium); }
+
+        .post-body blockquote {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.3rem;
+            margin: 1.8rem 0;
+            color: var(--ink-medium);
+            font-style: italic;
+        }
+
+        .post-body blockquote:first-child { margin-top: 0; }
+
+        .post-body blockquote p { color: var(--ink-medium); font-size: 1.1rem; }
+
+        .post-body .kg-blockquote-alt {
+            border-left: none;
+            text-align: center;
+            font-family: var(--body);
+            line-height: 1.05;
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.4;
+            color: var(--ink);
+            padding: 1rem 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .post-body .kg-blockquote-alt p { color: var(--ink); font-size: inherit; }
+
+        .post-body ul, .post-body ol {
+            margin: 1.35rem 0;
+            padding-left: 1.6em;
+            font-size: 1.16rem;
+            line-height: 1.72;
+        }
+
+        .post-body li { margin-bottom: 0.4rem; }
+        .post-body li::marker { color: var(--ink-light); }
+        .post-body ol li::marker { font-family: var(--mono); font-size: 0.85em; color: var(--ink-light); }
+
+        .post-body hr { border: none; border-top: 1px solid var(--rule); margin: 2.8rem 0; }
+
+        .post-body .kg-image-card { margin: 2rem 0; }
+        .post-body .kg-image-card img { width: 100%; border-radius: 2px; }
+
+        .post-body .kg-image-card.kg-width-wide,
+        .post-body .kg-gallery-card.kg-width-wide {
+            width: calc(100% + var(--wide-extend) * 2);
+            margin-left: calc(-1 * var(--wide-extend));
+        }
+
+        .post-body .kg-image-card.kg-width-full {
+            width: 100vw;
+            margin-left: calc(-50vw + 50% - (var(--margin-width) + var(--margin-gap)) / 2);
+            border-radius: 0;
+        }
+
+        .post-body .kg-image-card.kg-width-full img { border-radius: 0; }
+
+        .post-body figcaption {
+            padding: 0.6rem 0 0;
+            font-family: var(--ui);
+            font-size: 0.78rem;
+            color: var(--ink-light);
+            line-height: 1.4;
+        }
+
+        .post-body .kg-width-full figcaption {
+            max-width: var(--content-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .post-body .kg-gallery-card { margin: 2rem 0; }
+
+        .post-body .kg-gallery-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .post-body .kg-gallery-container img {
+            aspect-ratio: 1/1;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .post-body .kg-callout-card {
+            display: flex;
+            gap: 0.8rem;
+            padding: 1.2rem 1.4rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+            font-size: 1.02rem;
+            line-height: 1.65;
+        }
+
+        .post-body .kg-callout-card-grey { background: var(--paper-warm); }
+        .post-body .kg-callout-card-accent { background: var(--accent-bg); }
+        .post-body .kg-callout-card-yellow { background: #fdf6e8; }
+        .post-body .kg-callout-emoji { font-size: 1.2em; line-height: 1.4; flex-shrink: 0; }
+        .post-body .kg-callout-text { font-family: var(--body); }
+        .post-body .kg-callout-text p { font-size: inherit; margin-bottom: 0; }
+
+        .post-body .kg-bookmark-card { margin: 2rem 0; }
+
+        .post-body .kg-bookmark-container {
+            display: flex;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color 0.2s;
+        }
+
+        .post-body .kg-bookmark-container:hover { border-color: var(--ink-faint); }
+
+        .post-body .kg-bookmark-content {
+            flex: 1;
+            padding: 1.1rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        .post-body .kg-bookmark-title {
+            font-family: var(--ui);
+            font-size: 0.92rem;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 0.3rem;
+            color: var(--ink);
+        }
+
+        .post-body .kg-bookmark-description {
+            font-family: var(--ui);
+            font-size: 0.78rem;
+            color: var(--ink-medium);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .post-body .kg-bookmark-metadata {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--ink-light);
+        }
+
+        .post-body .kg-bookmark-icon { width: 16px; height: 16px; border-radius: 2px; }
+
+        .post-body .kg-bookmark-thumbnail {
+            width: 180px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .post-body .kg-bookmark-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-body .kg-toggle-card {
+            margin: 2rem 0;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .post-body .kg-toggle-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            font-family: var(--ui);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--ink);
+            gap: 1rem;
+        }
+
+        .post-body .kg-toggle-heading .kg-toggle-arrow {
+            flex-shrink: 0;
+            width: 0; height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 6px solid var(--ink-light);
+        }
+
+        .post-body .kg-toggle-content {
+            padding: 0 1.2rem 1rem;
+            font-size: 1rem;
+            line-height: 1.65;
+            color: var(--ink-medium);
+        }
+
+        .post-body .kg-toggle-content p { font-size: inherit; color: inherit; }
+
+        .post-body .kg-button-card { margin: 2rem 0; }
+        .post-body .kg-button-card.kg-align-center { text-align: center; }
+
+        .post-body .kg-btn {
+            display: inline-block;
+            font-family: var(--ui);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            padding: 0.7rem 1.6rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .post-body a.kg-btn { text-decoration: none; }
+        .post-body a.kg-btn:hover { text-decoration: none; }
+
+        .post-body .kg-btn-accent { background: var(--accent); color: var(--paper); }
+        .post-body .kg-btn-accent:hover { background: var(--accent-hover); color: var(--paper); }
+
+        .post-body .kg-btn-outline {
+            background: transparent;
+            color: var(--accent);
+            box-shadow: inset 0 0 0 1.5px var(--accent);
+        }
+
+        .post-body .kg-btn-outline:hover { background: var(--accent); color: var(--paper); }
+
+        .post-body :not(pre) code {
+            font-family: var(--mono);
+            font-size: 0.88em;
+            padding: 0.12em 0.4em;
+            background: var(--code-bg);
+            border: 1px solid var(--code-border);
+            border-radius: 3px;
+            color: var(--ink);
+        }
+
+        .post-body pre {
+            margin: 2rem 0;
+            padding: 1.2rem 1.4rem;
+            background: var(--code-bg);
+            border: 1px solid var(--code-border);
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: var(--ink);
+        }
+
+        .post-body pre code {
+            font-family: inherit; font-size: inherit;
+            padding: 0; background: none; border: none; border-radius: 0; color: inherit;
+        }
+
+        .post-body .kg-embed-card {
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .post-body .kg-embed-card iframe {
+            width: 100%;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .post-body .kg-audio-card {
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            background: var(--paper-warm);
+            border-radius: 4px;
+            border: 1px solid var(--rule);
+        }
+
+        .kg-audio-play {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .kg-audio-play-icon {
+            width: 0; height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 11px solid var(--paper);
+            margin-left: 2px;
+        }
+
+        .kg-audio-info { flex-shrink: 0; }
+
+        .kg-audio-title { font-family: var(--ui); font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+        .kg-audio-duration { font-family: var(--mono); font-size: 0.68rem; color: var(--ink-light); }
+
+        .kg-audio-bar {
+            flex: 1; height: 4px;
+            background: var(--rule); border-radius: 2px; position: relative;
+        }
+
+        .kg-audio-bar-fill {
+            position: absolute; left: 0; top: 0;
+            height: 100%; width: 35%;
+            background: var(--accent); border-radius: 2px;
+        }
+
+        .post-body .kg-video-card { margin: 2rem 0; }
+
+        .kg-video-container { position: relative; border-radius: 4px; overflow: hidden; }
+
+        .kg-video-play {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: rgba(44, 40, 32, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .kg-video-play:hover { background: rgba(44, 40, 32, 0.9); }
+
+        .kg-video-play-icon {
+            width: 0; height: 0;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-left: 14px solid var(--paper);
+            margin-left: 3px;
+        }
+
+        .post-body .kg-file-card { margin: 2rem 0; }
+
+        .post-body .kg-file-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color 0.2s;
+        }
+
+        .post-body .kg-file-container:hover { border-color: var(--ink-faint); text-decoration: none; }
+
+        .kg-file-info { flex: 1; }
+        .kg-file-title { font-family: var(--ui); font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+        .kg-file-meta { font-family: var(--mono); font-size: 0.68rem; color: var(--ink-light); }
+        .kg-file-download { font-family: var(--ui); font-size: 0.75rem; font-weight: 500; color: var(--accent); flex-shrink: 0; }
+
+        .post-body table {
+            width: 100%; border-collapse: collapse; margin: 2rem 0;
+            font-family: var(--ui); font-size: 0.88rem; line-height: 1.5;
+        }
+
+        .post-body thead th {
+            text-align: left; padding: 0.6rem 0.8rem;
+            font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            color: var(--ink-medium); border-bottom: 2px solid var(--rule);
+        }
+
+        .post-body tbody td {
+            padding: 0.55rem 0.8rem;
+            border-bottom: 1px solid var(--rule); color: var(--ink);
+        }
+
+        .post-body tbody tr:last-child td { border-bottom: none; }
+
+        .site-footer {
+            max-width: var(--stream-width);
+            margin: 0 auto;
+            padding: 3rem 0 4rem;
+            border-top: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .footer-hedera { font-size: 1.4rem; color: var(--ink-faint); margin-bottom: 1rem; }
+        .footer-tagline { font-family: var(--body); font-size: 0.98rem; font-style: italic; color: var(--ink-medium); margin-bottom: 1.8rem; }
+        .footer-links { display: flex; justify-content: center; gap: 1.2rem; }
+        .footer-links a { font-family: var(--ui); font-size: 0.75rem; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--ink); }
+        .footer-separator { color: var(--ink-faint); font-size: 0.7rem; }
+
+        @media (max-width: 740px) {
+            html { font-size: 17px; }
+            .post { padding: 2.2rem 0; }
+            .post-header { margin-left: 0; }
+            .post-reading { grid-template-columns: 1fr; gap: 0; }
+            .post-margin { display: flex; align-items: baseline; gap: 0.35rem; margin-bottom: 0.8rem; padding-top: 0 !important; }
+            .post-manicule { font-size: 1rem; margin-bottom: 0; }
+            .post-essay .post-title { font-size: 1.8rem; }
+            .post-body .kg-image-card.kg-width-wide, .post-body .kg-gallery-card.kg-width-wide { width: 100%; margin-left: 0; }
+            .post-body .kg-image-card.kg-width-full { margin-left: calc(-50vw + 50%); }
+            .post-body .kg-bookmark-container { flex-direction: column; }
+            .post-body .kg-bookmark-thumbnail { width: 100%; height: 160px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="#" class="site-title">A Broad Margin</a>
+        <div class="site-byline">by <a href="#">Chris McPhee</a></div>
+    </header>
+
+    <main class="stream">
+
+        <article class="post post-essay">
+            <div class="post-header">
+                <h2 class="post-title"><a href="#">Why Every Task App Is Broken</a></h2>
+            </div>
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Feb 14</time>
+                </div>
+                <div class="post-body">
+
+                    <p>I have a graveyard in my phone. Seventeen task apps, all of them beautiful, all of them built by thoughtful people who genuinely wanted to help me get things done. <s>Todoist</s>. <s>Things 3</s>. <s>OmniFocus</s>. <s>Reminders</s>. <s>TickTick</s>. <s>Notion</s>. Each one arrived like a new pair of running shoes — full of promise, laced with the conviction that <em>this time</em> the problem was the tool and not the feet.</p>
+
+                    <p>Here's what none of them know about me: I have 47 unread reminders. I have swiped away more notifications than I've acted on. I have been told by a dozen onboarding flows to "just capture everything" and felt the familiar sinking when <strong>capturing everything</strong> became another thing I couldn't do. The apps aren't broken. They're just built for someone else's brain.</p>
+
+                    <figure class="kg-image-card">
+                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=534&fit=crop" alt="A notebook with a to-do list">
+                        <figcaption>My father kept spiral notebooks. He didn't need an app because he never confused the system with the work.</figcaption>
+                    </figure>
+
+                    <p>This essay is about what I learned when I stopped looking for the right app and started asking a more dangerous question: <em>what does a task management system look like when it's designed for a brain that runs on interest, urgency, novelty, challenge, and passion — and literally cannot activate on importance alone?</em></p>
+
+                    <h2>The Ontological Problem</h2>
+
+                    <p>Every task app ships with a theory of how your mind works. That theory is almost never stated, but it's always there — embedded in the data model, the default views, the onboarding assumptions. And for most apps, the theory goes something like this:</p>
+
+                    <ol>
+                        <li>You know what needs to be done</li>
+                        <li>You can estimate when you'll do it</li>
+                        <li>Reminders at the right time will trigger action</li>
+                        <li>Completing tasks generates motivation to complete more tasks</li>
+                        <li>The gap between intention and action is primarily informational</li>
+                    </ol>
+
+                    <p>Every one of these assumptions is wrong for an <a href="#">interest-based nervous system</a>. Not slightly off. <strong>Architecturally wrong.</strong> It's like designing a house for someone who's told you they live in water. The foundation is the problem, not the fixtures.</p>
+
+                    <blockquote>
+                        <p>The knowing-doing gap is not an information problem. You can know exactly what to do, know it matters, know the deadline is tomorrow, and still find yourself unable to start. This is not laziness. It is a nervous system that does not respond to importance as an activation signal.</p>
+                    </blockquote>
+
+                    <p>I spent twenty years as a designer helping teams see the gap between their products' theory of reality and users' actual experience. The professional irony of doing that work while <em>every tool I used to run my own life</em> encoded a theory of my mind that was fundamentally wrong — well, it took a while to see it.</p>
+
+                    <h3>What the apps assume vs. what's actually true</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>The App Assumes</th>
+                                <th>What's Actually True</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tasks have stable priority</td>
+                                <td>Priority shifts based on interest, energy, and context</td>
+                            </tr>
+                            <tr>
+                                <td>Due dates create urgency</td>
+                                <td>Everything is either "now" or "not now" — there is no gradient</td>
+                            </tr>
+                            <tr>
+                                <td>Notifications trigger action</td>
+                                <td>Notifications trigger guilt, then dismissal</td>
+                            </tr>
+                            <tr>
+                                <td>A clean inbox = a clear mind</td>
+                                <td>Maintaining the inbox becomes the task, replacing the actual tasks</td>
+                            </tr>
+                            <tr>
+                                <td>Consistent daily review keeps things on track</td>
+                                <td>The system will decay in 2-6 weeks and that's normal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <blockquote class="kg-blockquote-alt">
+                        <p>The divergent mind needs convergent systems. But the convergent systems on offer were designed for convergent minds.</p>
+                    </blockquote>
+
+                    <h2>The Graveyard Tour</h2>
+
+                    <p>Let me take you through the wreckage. Not to be morbid — to be diagnostic. Each failed app taught me something about what my brain actually needs, even as the app itself couldn't provide it.</p>
+
+                    <h4>Phase One: The GTD Era</h4>
+
+                    <p>I read <em>Getting Things Done</em> in 2008 and felt the particular euphoria of a framework that explains your whole life. David Allen's insight — that your brain is for having ideas, not holding them — hit like revelation. The problem is that GTD assumes a functioning executive function system for the weekly review, context switching, and project decomposition that makes the whole thing run. I could <em>set up</em> OmniFocus like a cathedral. I could not <em>inhabit</em> it past week three.</p>
+
+                    <div class="kg-bookmark-card">
+                        <a class="kg-bookmark-container" href="https://gettingthingsdone.com" target="_blank" rel="noopener">
+                            <div class="kg-bookmark-content">
+                                <div class="kg-bookmark-title">Getting Things Done — The Art of Stress-Free Productivity</div>
+                                <div class="kg-bookmark-description">David Allen's productivity methodology that changed how knowledge workers think about task management. The system is brilliant. The assumption that you'll maintain it is the gap.</div>
+                                <div class="kg-bookmark-metadata">
+                                    <img class="kg-bookmark-icon" src="https://www.google.com/s2/favicons?domain=gettingthingsdone.com&sz=32" alt="">
+                                    <span>gettingthingsdone.com</span>
+                                </div>
+                            </div>
+                            <div class="kg-bookmark-thumbnail">
+                                <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=360&h=240&fit=crop" alt="">
+                            </div>
+                        </a>
+                    </div>
+
+                    <h4>Phase Two: The Beautiful Minimalists</h4>
+
+                    <p>Things 3. Clear. Apple Reminders. The theory here was that complexity was the problem — if the tool is simple enough, you'll use it. But simplicity wasn't the problem. <em>Activation</em> was the problem. A beautiful empty list is still an empty list. I don't need fewer fields. I need a system that understands the difference between "I know I should do this" and "I can actually do this right now."</p>
+
+                    <h4>Phase Three: The Everything Tools</h4>
+
+                    <p>Notion. Obsidian. Roam Research. The theory flipped: maybe the problem is that tasks aren't connected to their context. If you can link everything to everything, the connections will carry you. And there's truth in this — for <em>thinking</em>. But tasks aren't thoughts. Tasks are commitments to act, and the commitment doesn't become easier because it's cross-referenced with a note from last Tuesday.</p>
+
+                    <div class="kg-callout-card kg-callout-card-grey">
+                        <div class="kg-callout-emoji">&#128161;</div>
+                        <div class="kg-callout-text"><p>The pattern across all three phases: I was acquiring tools instead of inhabiting practices. Every setup was preparation. None of it was doing.</p></div>
+                    </div>
+
+                    <hr>
+
+                    <h2>What I Built Instead</h2>
+
+                    <p>Eventually I stopped searching and started designing. Not an app — a system. Plain text files in a folder, managed by hand and by an AI that understands my brain. Here's the architecture:</p>
+
+                    <pre><code>McBrain/
+├── Daily/           # TRUE INBOX - all capture here
+├── Tasks/
+│   ├── Focus.md     # FRONTEND - what I look at
+│   ├── Active.md    # BACKEND - rich metadata
+│   ├── Waiting.md   # Blocked on others
+│   └── Someday.md   # Parked, not abandoned
+├── Reference/       # Knowledge that stays
+└── Projects/        # Active work</code></pre>
+
+                    <p>The key insight is the <strong>frontend/backend split</strong>. <code>Active.md</code> is the backend — every task with full metadata, context, energy level, project links. I never look at it. <code>Focus.md</code> is the frontend — a curated, glanceable view regenerated from the backend. It has eight sections: Today, This Week, Important & Slipping, Quick Wins, Deep Work Queue, Calls to Batch, Errands to Batch, and Practices to Remember.</p>
+
+                    <p>The system runs on three principles:</p>
+
+                    <ul>
+                        <li><strong>Capture is dumb.</strong> Everything goes into today's daily note. No categorization at capture time. Sorting is a separate cognitive step and forcing it at the moment of capture kills the capture habit.</li>
+                        <li><strong>Processing is smart.</strong> A <code>/process</code> command routes captures to their destinations, infers metadata, regenerates the focus view. The intelligence is in the processing, not the input.</li>
+                        <li><strong>Focus is curated.</strong> I don't look at a list of everything. I look at a view designed for <em>this moment</em> — what's moveable, what's urgent, what matches my current energy.</li>
+                    </ul>
+
+                    <figure class="kg-image-card kg-width-wide">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1000&h=667&fit=crop" alt="A clean workspace with a laptop and notebook">
+                        <figcaption>The workspace is part of the system. Environment design isn't optional for this brain — it's infrastructure.</figcaption>
+                    </figure>
+
+                    <h3>The daily note as inbox</h3>
+
+                    <p>This was the breakthrough that made everything else work. There is no separate inbox. The daily note <em>is</em> the inbox. Everything I capture — a thought, a task, a link, a conversation summary — goes into today's daily note under a <code>## 🔥 Capture</code> heading. That's it. One place. One gesture. The activation energy for capture drops to near zero because I'm already in the daily note for everything else.</p>
+
+                    <div class="kg-callout-card kg-callout-card-accent">
+                        <div class="kg-callout-emoji">&#9758;</div>
+                        <div class="kg-callout-text"><p>The design principle: reduce activation energy for the <em>right</em> actions to near zero. Make the path of least resistance also the path of greatest value. This is environment design applied to software.</p></div>
+                    </div>
+
+                    <h3>Why plain text?</h3>
+
+                    <p>Because I've lost data to every proprietary format I've ever trusted. Because plain text files are the only format guaranteed to be readable in fifty years. Because markdown renders beautifully in Obsidian today and will render beautifully in whatever comes after Obsidian. Because the system serves me, not the other way around.</p>
+
+                    <div class="kg-toggle-card">
+                        <div class="kg-toggle-heading">
+                            <span>Technical details: the metadata schema</span>
+                            <div class="kg-toggle-arrow"></div>
+                        </div>
+                        <div class="kg-toggle-content">
+                            <p>Each task in Active.md carries: status, energy level (low/medium/high), time estimate, project link, date added, date due (if real), and a context tag. The /process command infers most of these from the capture text and surrounding context. I correct when it's wrong, which is maybe 20% of the time. Good enough. Perfect is the enemy of done, especially for metadata.</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h2>The Deeper Pattern</h2>
+
+                    <p>Here's what I didn't expect: building the system taught me more about my brain than any self-help book or productivity framework ever did. Not because the system is clever, but because <strong>designing for yourself forces you to see yourself clearly.</strong> You can't build a task system for your brain without first understanding how your brain actually handles tasks. And that understanding — not the system — is the real product.</p>
+
+                    <figure class="kg-image-card kg-width-full">
+                        <img src="https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?w=1600&h=686&fit=crop" alt="Misty forest at dawn">
+                        <figcaption>Colonsay, Scotland. I hiked 20km a day here without any system at all. Sometimes context removes the need for tools entirely.</figcaption>
+                    </figure>
+
+                    <p>My father kept spiral notebooks. He wrote in them every day for decades — not because someone told him to journal, not because he'd read a book about it, but because his brain needed to externalize to function. He didn't have a word for it. I do. The word is <em>access infrastructure</em>. The notebook was his ramp to his own mind.</p>
+
+                    <p>His father — my grandfather — walked. Long walks through the Scottish countryside, noticing things, saying nothing about them to anyone. Three generations of the same brain, finding three different containers for the same overflow.</p>
+
+                    <figure class="kg-gallery-card kg-width-wide">
+                        <div class="kg-gallery-container">
+                            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&h=600&fit=crop" alt="Handwriting in a notebook">
+                            <img src="https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?w=600&h=600&fit=crop" alt="Walking path through green fields">
+                            <img src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?w=600&h=600&fit=crop" alt="Open notebook with pen">
+                            <img src="https://images.unsplash.com/photo-1476820865390-c52aeebb9891?w=600&h=600&fit=crop" alt="Foggy Scottish landscape">
+                        </div>
+                        <figcaption>Spiral notebooks, walking paths, digital vaults. Three containers for the same overflow, across three generations.</figcaption>
+                    </figure>
+
+                    <h2>What I Listen to While Building</h2>
+
+                    <p>An aside, because the music matters. When I'm deep in system work — restructuring files, writing processing logic, designing the architecture of my own thinking — I need something without words, without edges, something that fills the room without asking to be noticed. Tycho has been the soundtrack to every version of this system.</p>
+
+                    <div class="kg-embed-card">
+                        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/tycho/infinite-burning-man-sunrise-2024&color=%239b6a4a&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style="border-radius: 4px;"></iframe>
+                    </div>
+
+                    <p>And sometimes I need the opposite. Something with all the edges. When the system is fighting me and I need to push through the friction rather than design around it:</p>
+
+                    <div class="kg-audio-card">
+                        <div class="kg-audio-play">
+                            <div class="kg-audio-play-icon"></div>
+                        </div>
+                        <div class="kg-audio-info">
+                            <div class="kg-audio-title">Junior Pupils — Unreleased Demo</div>
+                            <div class="kg-audio-duration">4:17</div>
+                        </div>
+                        <div class="kg-audio-bar">
+                            <div class="kg-audio-bar-fill"></div>
+                        </div>
+                    </div>
+
+                    <h2>The Talk That Changed How I See It</h2>
+
+                    <p>Bret Victor's <em>Inventing on Principle</em> isn't about task management. It's about something deeper: the idea that a creator's work is an extension of their values, and that the tools you build reveal what you believe. When I watched this for the third time, I stopped seeing my system as a productivity hack and started seeing it as a <em>design artifact</em> — a physical expression of what I've learned about how my mind works.</p>
+
+                    <div class="kg-video-card">
+                        <div class="kg-video-container">
+                            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=960&h=540&fit=crop" alt="Conference presentation" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:block;">
+                            <div class="kg-video-play">
+                                <div class="kg-video-play-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h2>What I'd Tell You</h2>
+
+                    <p>If you've tried every app and none of them stuck, the problem might not be discipline. It might be ontology. The app's model of your mind might be wrong. And if it's wrong, no amount of effort will make it right — you're running incompatible software on incompatible hardware.</p>
+
+                    <div class="kg-callout-card kg-callout-card-yellow">
+                        <div class="kg-callout-emoji">&#9888;</div>
+                        <div class="kg-callout-text"><p>This is not advice to build your own system from scratch. That's its own trap — the <em>acquiring</em> of system-building skills as a substitute for using them. Start with what you have. Pay attention to where it breaks. The breaks are data.</p></div>
+                    </div>
+
+                    <p>Three things I know for sure:</p>
+
+                    <ol>
+                        <li><strong>Capture should be dumb and fast.</strong> If it takes more than one gesture, you won't do it when it matters. One inbox. No categorization at capture time. Sort later.</li>
+                        <li><strong>The system will decay. Design for restart, not for permanence.</strong> Every system built for a divergent mind will be abandoned in 2-6 weeks. That's not failure. The only failure is not restarting.</li>
+                        <li><strong>The most moveable thing beats the most important thing.</strong> When you're stuck, don't look for what matters most. Look for what you can actually <em>do</em>. Momentum transfers. Start anywhere.</li>
+                    </ol>
+
+                    <div class="kg-toggle-card">
+                        <div class="kg-toggle-heading">
+                            <span>If you want to try this yourself</span>
+                            <div class="kg-toggle-arrow"></div>
+                        </div>
+                        <div class="kg-toggle-content">
+                            <p>You don't need Obsidian, though it's what I use. You need a folder, a daily file, and a focus file. Write today's date at the top. Dump everything there. At the end of the day, move the actionable things to the focus file. That's it. That's the whole system on day one. Everything else is refinement.</p>
+                        </div>
+                    </div>
+
+                    <p>I've written up the full architecture — the folder structure, the metadata schema, the processing rules, the focus view format — in a document I keep updating as the system evolves. You can have it:</p>
+
+                    <div class="kg-file-card">
+                        <a class="kg-file-container" href="#">
+                            <div class="kg-file-info">
+                                <div class="kg-file-title">External Brain Blueprint — System Architecture v3</div>
+                                <div class="kg-file-meta">PDF &middot; 340 KB</div>
+                            </div>
+                            <div class="kg-file-download">Download &darr;</div>
+                        </a>
+                    </div>
+
+                    <hr>
+
+                    <p>My father is gone now. I have some of his notebooks in a box in the basement. The handwriting is small and precise and completely unselfconscious — he never thought anyone would read them. He just needed to put the day somewhere outside his head so he could move through it.</p>
+
+                    <p>I think about him every time I open my daily note. The tools are different. The impulse is the same. We externalize because our minds are too generative to hold everything internally, and the world wasn't designed for the way we process it. The notebook, the walk, the vault of markdown files — they're all the same gesture. They're all a hand reaching out to make a mark and saying: <em>I was here. I noticed this. It mattered.</em></p>
+
+                    <p>That's not a productivity system. That's a life practice.</p>
+
+                    <div class="kg-button-card kg-align-center">
+                        <a href="#" class="kg-btn kg-btn-outline">Subscribe to A Broad Margin</a>
+                    </div>
+
+                    <p>The task apps in my phone are still there, greyed out, icons I swipe past every morning on my way to the text editor where the actual work happens. I should delete them. I probably won't. They're expensive mirrors — reflections of who I hoped I'd become if I just found the right tool. Turns out the right tool was the one I built myself, imperfect and evolving, shaped exactly like the problem it solves. <a href="#" class="post-endmark" title="Permalink">&#9670;</a></p>
+
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-hedera">&#10087;</div>
+        <div class="footer-tagline">Observations from the white space.</div>
+        <div class="footer-links">
+            <a href="#">Subscribe</a>
+            <span class="footer-separator">&middot;</span>
+            <a href="#">RSS</a>
+            <span class="footer-separator">&middot;</span>
+            <a href="#">About</a>
+        </div>
+    </footer>
+
+</body>
+</html>

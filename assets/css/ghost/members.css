@@ -1,55 +1,93 @@
-/* Members Auth Template
-/* ---------------------------------------------------------- */
+/* ============================================
+   A BROAD MARGIN — Members Auth Templates
+   ============================================ */
 
 .gh-auth-form {
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto 10vmin;
+    max-width: 460px;
+    margin: 4rem auto 8rem;
     text-align: center;
 }
 
 .gh-auth-title {
-    margin: 0 0 0.1em;
-    font-size: 4.2rem;
+    font-family: var(--display);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin: 0 0 0.5rem;
 }
 
 .gh-auth-form p {
-    margin: 10px 0 4vmin 0;
-    font-size: 1.7rem;
-    color: rgba(0,0,0,0.6)
+    font-family: var(--body);
+    font-size: 1.05rem;
+    color: var(--ink-medium);
+    margin: 0 0 2rem;
 }
 
 .gh-auth-form p small {
     display: inline-block;
-    margin: 15px 0 0 0;
-    font-size: 1.4rem;
+    margin: 1rem 0 0 0;
+    font-family: var(--ui);
+    font-size: 0.8rem;
+}
+
+.gh-auth-form p small a {
+    color: var(--accent);
 }
 
 .gh-auth-box {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    max-width: 460px;
-    margin: 0 auto;
+    gap: 0.5rem;
 }
 
-.gh-auth-box .gh-button {
-    margin-left: 10px;
+.gh-input {
+    flex: 1;
+    height: 2.8rem;
+    padding: 0 1rem;
+    font-family: var(--ui);
+    font-size: 0.88rem;
+    color: var(--ink);
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.gh-input:focus { border-color: var(--accent); }
+
+.gh-button {
+    height: 2.8rem;
+    padding: 0 1.4rem;
+    font-family: var(--ui);
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.gh-button-primary {
+    background: var(--accent);
+    color: var(--paper);
+}
+
+.gh-button-primary:hover {
+    background: var(--accent-hover);
 }
 
 @media (max-width: 600px) {
     .gh-auth-box {
         flex-direction: column;
-        max-width: 400px;
     }
-    .gh-auth-box .gh-button {
-        width: 100%;
-        margin: 15px 0 0 0;
-    }
+    .gh-input { width: 100%; }
+    .gh-button { width: 100%; }
 }
 
-/* Members Forms
-/* ---------------------------------------------------------- */
+/* Members Forms State */
 
 form[data-members-form] .gh-button-loader,
 form[data-members-form] .message-success,
@@ -58,64 +96,47 @@ form[data-members-form] .message-error {
 }
 
 .gh-button-content {
-    min-width: 100px;
-}
-
-.message-success svg,
-.message-error svg {
-    position: relative;
-    top: -1px;
-    margin-right: 5px;
-    height: 15px;
-    width: 15px;
-}
-.message-success svg {
-    fill: #fff;
-}
-.message-error svg {
-    fill: var(--color-error);
+    min-width: 80px;
 }
 
 form[data-members-form].success .message-success,
 form[data-members-form].error .message-error {
     position: fixed;
     top: 20px;
-    left: 4vmin;
-    right: 4vmin;
+    left: 1.5rem;
+    right: 1.5rem;
     z-index: 9999;
-    max-width: calc(1400px - 8vmin);
+    max-width: var(--stream-width);
     margin: 0 auto;
-    padding: 10px 0;
-    color: #fff;
-    font-size: 1.4rem;
-    line-height: 1.5em;
+    padding: 0.8rem 1.2rem;
+    font-family: var(--ui);
+    font-size: 0.85rem;
     font-weight: 500;
     text-align: center;
-    background: var(--color-base);
-    border-radius: var(--radius);
+    border-radius: 4px;
 }
+
 form[data-members-form].success .message-success {
-    background: var(--color-success);
+    display: block;
+    color: var(--paper);
+    background: var(--accent);
 }
+
 form[data-members-form].error .message-error {
-    color: var(--color-error);
-    background: #fff;
-    box-shadow: var(--color-error) 0 0 0 1px;
+    display: block;
+    color: #c0392b;
+    background: var(--paper);
+    box-shadow: #c0392b 0 0 0 1px;
 }
 
 form[data-members-form] .gh-button {
     position: relative;
-    min-width: 120px;
 }
 
-/*-- Loading --*/
-
-/* Hide button text */
 form[data-members-form].loading .gh-button-content {
     visibility: hidden;
 }
 
-/* Show loading spinner */
 form[data-members-form].loading .gh-button-loader {
     display: inline-block;
     position: absolute;
@@ -126,16 +147,127 @@ form[data-members-form].loading .gh-button-loader {
 }
 
 .gh-button-loader svg path,
-.gh-button-loader svg rect{
-  fill: #fff;
+.gh-button-loader svg rect {
+    fill: var(--paper);
 }
 
-/*-- Show success message on success --*/
-form[data-members-form].success .message-success {
-    display: block;
+/* Account page */
+
+.account-box {
+    max-width: 460px;
+    margin: 4rem auto 8rem;
+    text-align: center;
 }
 
-/*-- Show error message on error --*/
-form[data-members-form].error .message-error {
-    display: block;
+.account-box-title {
+    font-family: var(--display);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 1rem;
+}
+
+.account-box p {
+    font-family: var(--body);
+    font-size: 1.05rem;
+    color: var(--ink-medium);
+    margin-bottom: 1.5rem;
+}
+
+.account-box .button {
+    display: inline-block;
+    font-family: var(--ui);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.7rem 1.6rem;
+    background: var(--accent);
+    color: var(--paper);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.account-box .button:hover {
+    background: var(--accent-hover);
+}
+
+/* Checkout form */
+
+.gh-checkout-form {
+    max-width: 460px;
+    margin: 4rem auto 8rem;
+    text-align: center;
+}
+
+.gh-checkout-title {
+    font-family: var(--display);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+}
+
+.gh-checkout-form > p {
+    font-family: var(--body);
+    font-size: 1.05rem;
+    color: var(--ink-medium);
+    margin-bottom: 2rem;
+}
+
+.gh-checkout-plan {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: left;
+    overflow: hidden;
+}
+
+.gh-checkout-plan-header {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--ui);
+    font-size: 0.92rem;
+}
+
+.gh-checkout-plan-header h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.gh-checkout-plan-header strong {
+    font-size: 1.4rem;
+}
+
+.gh-checkout-plan-content {
+    padding: 1rem 1.2rem;
+}
+
+.gh-checkout-plan-content ul {
+    margin: 0 0 1rem;
+    padding-left: 1.2em;
+    font-family: var(--ui);
+    font-size: 0.88rem;
+    color: var(--ink-medium);
+}
+
+.gh-checkout-plan-content li {
+    margin-bottom: 0.3rem;
+}
+
+.gh-checkout-plan-content .button {
+    display: inline-block;
+    font-family: var(--ui);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.6rem 1.4rem;
+    background: var(--accent);
+    color: var(--paper);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.gh-checkout-plan-content .button:hover {
+    background: var(--accent-hover);
 }

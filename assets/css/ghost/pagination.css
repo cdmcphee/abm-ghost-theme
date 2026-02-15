@@ -1,6 +1,22 @@
+/* ============================================
+   A BROAD MARGIN — Pagination
+   ============================================ */
 
-.gh-pagination .pagination {
+.pagination {
+    max-width: var(--stream-width);
+    margin: 0 auto;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--rule);
     display: flex;
-    justify-content: space-between;
-    margin-block: 4vmin;
+    justify-content: center;
 }
+
+.pagination a {
+    font-family: var(--ui);
+    font-size: 0.82rem;
+    color: var(--ink-medium);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.pagination a:hover { color: var(--ink); }

@@ -1,60 +1,41 @@
-/* Error Templates
-/* ---------------------------------------------------------- */
+/* ============================================
+   A BROAD MARGIN — Error Pages
+   ============================================ */
 
 .gh-error {
     flex: 1 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 2vmin;
-}
-
-.gh-error-content {
-    flex: 1 0 auto;
+    align-items: center;
+    min-height: 60vh;
     text-align: center;
+    padding: 4rem 1.5rem;
 }
 
 .gh-error-code {
-    margin: 0;
-    font-size: 14vmin;
+    font-family: var(--display);
+    font-size: 8rem;
+    font-weight: 300;
+    color: var(--ink-faint);
+    line-height: 1;
+    margin-bottom: 1rem;
 }
 
 .gh-error-description {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    font-size: 4vmin;
-    line-height: 1.2em;
-    font-weight: 300;
-    opacity: 0.6;
+    font-family: var(--body);
+    font-size: 1.2rem;
+    color: var(--ink-medium);
+    max-width: 400px;
+    margin-bottom: 2rem;
 }
 
 .gh-error-link {
-    display: block;
-    margin-top: 4vmin;
-    font-size: 1.6rem;
+    font-family: var(--ui);
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
 }
 
-.gh-error-stack {
-    max-width: 600px;
-    margin: 0 auto 0;
-    padding: 8vmin 0;
-    text-align: left;
-}
-
-.gh-error-stack-list {
-    margin: 4vmin 0 0;
-    font-size: 1.4rem;
-}
-
-.gh-error-stack-list > li {
-    padding: 2rem 0;
-    margin: 0;
-    border-top: rgba(0,0,0,0.1) 1px solid;
-}
-
-.gh-error-stack-function {
-    margin: 0 0 0.5em;
-    font-size: 1.8rem;
-    color: red;
-}
+.gh-error-link:hover { color: var(--accent-hover); }

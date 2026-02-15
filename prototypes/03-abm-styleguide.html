@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Broad Margin — Prototype 03: Style Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           A BROAD MARGIN — Prototype 03b: Style Guide
+           Every Ghost content element, margin layout
+           ============================================ */
+
+        :root {
+            --paper:        #faf7f2;
+            --paper-warm:   #f3efe8;
+            --ink:          #2c2820;
+            --ink-medium:   #5c564e;
+            --ink-light:    #8a847c;
+            --ink-faint:    #c4bfb8;
+            --rule:         #ddd8d0;
+            --accent:       #9b6a4a;
+            --accent-hover: #7a4f35;
+            --accent-bg:    rgba(155, 106, 74, 0.06);
+            --code-bg:      #f0ebe4;
+            --code-border:  #e0dbd3;
+
+            --display:  'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --body:     'Crimson Pro', Georgia, 'Times New Roman', serif;
+            --ui:       'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --mono:     'DM Mono', 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+
+            --content-width: 620px;
+            --margin-width: 72px;
+            --margin-gap: 1.5rem;
+            --stream-width: calc(var(--margin-width) + var(--margin-gap) + var(--content-width));
+            --wide-extend: calc(var(--margin-width) + var(--margin-gap));
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: clip;
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: var(--body);
+            line-height: 1.72;
+            padding: 0 1.5rem;
+        }
+
+        /* ---- SITE HEADER ---- */
+
+        .site-header {
+            max-width: var(--stream-width);
+            margin: 0 auto;
+            padding: 3.5rem 0 2.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .site-title {
+            font-family: var(--display);
+            font-size: 1.45rem;
+            font-weight: 300;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .site-title:hover { color: var(--accent); }
+
+        .site-byline {
+            font-family: var(--ui);
+            font-size: 0.78rem;
+            font-weight: 400;
+            color: var(--ink-light);
+        }
+
+        .site-byline a {
+            color: var(--ink-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .site-byline a:hover { color: var(--ink); }
+
+        /* ---- STREAM ---- */
+
+        .stream {
+            max-width: var(--stream-width);
+            margin: 0 auto;
+        }
+
+        /* ---- POST (shared) ---- */
+
+        .post {
+            padding: 2.8rem 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .post-header {
+            margin-left: calc(var(--margin-width) + var(--margin-gap));
+        }
+
+        .post-reading {
+            display: grid;
+            grid-template-columns: var(--margin-width) 1fr;
+            gap: 0 var(--margin-gap);
+            overflow: visible;
+        }
+
+        .post-body {
+            overflow: visible;
+            min-width: 0;
+        }
+
+        /* ---- THE MARGIN ---- */
+
+        .post-margin {
+            padding-top: 0.62rem;
+        }
+
+        .post-manicule {
+            font-size: 1.15rem;
+            line-height: 1;
+            color: var(--ink-light);
+            margin-bottom: -0.35rem;
+        }
+
+        .post-date {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            font-weight: 400;
+            color: var(--ink-light);
+            letter-spacing: 0.01em;
+            line-height: 1;
+        }
+
+        /* ---- POST TITLE ---- */
+
+        .post-essay .post-title {
+            font-family: var(--display);
+            font-size: 2.2rem;
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--ink);
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-essay .post-title a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .post-essay .post-title a:hover { color: var(--accent); }
+
+
+        /* ============================================
+           GHOST CONTENT ELEMENTS
+           ============================================ */
+
+        /* ---- PARAGRAPHS ---- */
+
+        .post-body p {
+            margin-bottom: 1.35rem;
+            font-size: 1.16rem;
+            line-height: 1.72;
+        }
+
+        .post-body p:last-child { margin-bottom: 0; }
+
+        /* ---- LINKS ---- */
+
+        .post-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: var(--ink-faint);
+            transition: text-decoration-color 0.2s;
+        }
+
+        .post-body a:hover { text-decoration-color: var(--accent); }
+
+        /* ---- END MARK ---- */
+
+        .post-body a.post-endmark {
+            color: var(--ink-faint);
+            text-decoration: none;
+            font-size: 0.8em;
+            margin-left: 0.25em;
+            vertical-align: 0.03em;
+            transition: color 0.2s;
+        }
+
+        .post-body a.post-endmark:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* ---- HEADINGS ---- */
+
+        .post-body h2 {
+            font-family: var(--display);
+            font-size: 1.7rem;
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--ink);
+            margin: 2.8rem 0 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .post-body h3 {
+            font-family: var(--display);
+            font-size: 1.35rem;
+            font-weight: 300;
+            line-height: 1.25;
+            color: var(--ink);
+            margin: 2.2rem 0 0.8rem;
+        }
+
+        .post-body h4 {
+            font-family: var(--ui);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink-medium);
+            margin: 2rem 0 0.7rem;
+        }
+
+        .post-body h2:first-child,
+        .post-body h3:first-child,
+        .post-body h4:first-child { margin-top: 0; }
+
+        /* ---- STRONG, EM, STRIKETHROUGH ---- */
+
+        .post-body strong { font-weight: 600; }
+        .post-body em { font-style: italic; }
+        .post-body s { text-decoration: line-through; color: var(--ink-medium); }
+
+        /* ---- BLOCKQUOTE ---- */
+
+        .post-body blockquote {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.3rem;
+            margin: 1.8rem 0;
+            color: var(--ink-medium);
+            font-style: italic;
+        }
+
+        .post-body blockquote:first-child { margin-top: 0; }
+
+        .post-body blockquote p {
+            color: var(--ink-medium);
+            font-size: 1.1rem;
+        }
+
+        /* ---- PULLQUOTE ---- */
+
+        .post-body .kg-blockquote-alt {
+            border-left: none;
+            text-align: center;
+            font-family: var(--body);
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.05;
+            color: var(--ink);
+            padding: 1rem 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .post-body .kg-blockquote-alt p {
+            color: var(--ink);
+            font-size: inherit;
+        }
+
+        /* ---- LISTS ---- */
+
+        .post-body ul,
+        .post-body ol {
+            margin: 1.35rem 0;
+            padding-left: 1.6em;
+            font-size: 1.16rem;
+            line-height: 1.72;
+        }
+
+        .post-body li { margin-bottom: 0.4rem; }
+        .post-body li::marker { color: var(--ink-light); }
+
+        .post-body ol li::marker {
+            font-family: var(--mono);
+            font-size: 0.85em;
+            color: var(--ink-light);
+        }
+
+        /* ---- DIVIDER ---- */
+
+        .post-body hr {
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 2.8rem 0;
+        }
+
+        /* ---- IMAGES ---- */
+
+        .post-body .kg-image-card {
+            margin: 2rem 0;
+        }
+
+        .post-body .kg-image-card img {
+            width: 100%;
+            border-radius: 2px;
+        }
+
+        /* Wide — extends equally on both sides */
+        .post-body .kg-image-card.kg-width-wide,
+        .post-body .kg-gallery-card.kg-width-wide {
+            width: calc(100% + var(--wide-extend) * 2);
+            margin-left: calc(-1 * var(--wide-extend));
+        }
+
+        /* Full — edge to edge, corrected for margin offset */
+        .post-body .kg-image-card.kg-width-full {
+            width: 100vw;
+            margin-left: calc(-50vw + 50% - (var(--margin-width) + var(--margin-gap)) / 2);
+            border-radius: 0;
+        }
+
+        .post-body .kg-image-card.kg-width-full img { border-radius: 0; }
+
+        /* Placeholder */
+        .img-placeholder {
+            background: var(--paper-warm);
+            border: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--ink-faint);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .img-placeholder.landscape { aspect-ratio: 3 / 2; }
+        .img-placeholder.wide-landscape { aspect-ratio: 21 / 9; }
+
+        /* Caption */
+        .post-body figcaption {
+            padding: 0.6rem 0 0;
+            font-family: var(--ui);
+            font-size: 0.78rem;
+            color: var(--ink-light);
+            line-height: 1.4;
+        }
+
+        .post-body .kg-width-full figcaption {
+            max-width: var(--content-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ---- GALLERY ---- */
+
+        .post-body .kg-gallery-card {
+            margin: 2rem 0;
+        }
+
+        .post-body .kg-gallery-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .post-body .kg-gallery-container .img-placeholder { aspect-ratio: 1 / 1; }
+
+        /* ---- CALLOUT ---- */
+
+        .post-body .kg-callout-card {
+            display: flex;
+            gap: 0.8rem;
+            padding: 1.2rem 1.4rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+            font-size: 1.02rem;
+            line-height: 1.65;
+        }
+
+        .post-body .kg-callout-card-grey { background: var(--paper-warm); }
+        .post-body .kg-callout-card-white { background: #fff; border: 1px solid var(--rule); }
+        .post-body .kg-callout-card-blue { background: #eef3f7; }
+        .post-body .kg-callout-card-green { background: #eef5ec; }
+        .post-body .kg-callout-card-yellow { background: #fdf6e8; }
+        .post-body .kg-callout-card-red { background: #faeeed; }
+        .post-body .kg-callout-card-pink { background: #f8eef5; }
+        .post-body .kg-callout-card-purple { background: #f1eef8; }
+        .post-body .kg-callout-card-accent { background: var(--accent-bg); }
+
+        .post-body .kg-callout-emoji { font-size: 1.2em; line-height: 1.4; flex-shrink: 0; }
+
+        .post-body .kg-callout-text { font-family: var(--body); }
+        .post-body .kg-callout-text p { font-size: inherit; margin-bottom: 0; }
+
+        /* ---- BOOKMARK ---- */
+
+        .post-body .kg-bookmark-card { margin: 2rem 0; }
+
+        .post-body .kg-bookmark-container {
+            display: flex;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color 0.2s;
+        }
+
+        .post-body .kg-bookmark-container:hover { border-color: var(--ink-faint); }
+
+        .post-body .kg-bookmark-content {
+            flex: 1;
+            padding: 1.1rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        .post-body .kg-bookmark-title {
+            font-family: var(--ui);
+            font-size: 0.92rem;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 0.3rem;
+            color: var(--ink);
+        }
+
+        .post-body .kg-bookmark-description {
+            font-family: var(--ui);
+            font-size: 0.78rem;
+            color: var(--ink-medium);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .post-body .kg-bookmark-metadata {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--ink-light);
+        }
+
+        .post-body .kg-bookmark-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+        }
+
+        .post-body .kg-bookmark-thumbnail {
+            width: 180px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .post-body .kg-bookmark-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-body .kg-bookmark-thumbnail .img-placeholder {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: auto;
+            border-radius: 0;
+            border: none;
+            border-left: 1px solid var(--rule);
+        }
+
+        /* Bookmark without thumbnail */
+        .post-body .kg-bookmark-container--no-thumb {
+            display: flex;
+        }
+
+        /* ---- TOGGLE / ACCORDION ---- */
+
+        .post-body .kg-toggle-card {
+            margin: 2rem 0;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .post-body .kg-toggle-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            font-family: var(--ui);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--ink);
+            gap: 1rem;
+        }
+
+        .post-body .kg-toggle-heading .kg-toggle-arrow {
+            flex-shrink: 0;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 6px solid var(--ink-light);
+            transition: transform 0.2s;
+        }
+
+        .post-body .kg-toggle-card[data-open] .kg-toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        .post-body .kg-toggle-content {
+            padding: 0 1.2rem 1rem;
+            font-size: 1rem;
+            line-height: 1.65;
+            color: var(--ink-medium);
+        }
+
+        .post-body .kg-toggle-content p { font-size: inherit; color: inherit; }
+
+        /* ---- BUTTONS ---- */
+
+        .post-body .kg-button-card { margin: 2rem 0; }
+        .post-body .kg-button-card.kg-align-center { text-align: center; }
+
+        .post-body .kg-btn {
+            display: inline-block;
+            font-family: var(--ui);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            padding: 0.7rem 1.6rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .post-body a.kg-btn { text-decoration: none; }
+        .post-body a.kg-btn:hover { text-decoration: none; }
+
+        .post-body .kg-btn-accent {
+            background: var(--accent);
+            color: var(--paper);
+        }
+
+        .post-body .kg-btn-accent:hover {
+            background: var(--accent-hover);
+            color: var(--paper);
+        }
+
+        .post-body .kg-btn-outline {
+            background: transparent;
+            color: var(--accent);
+            box-shadow: inset 0 0 0 1.5px var(--accent);
+        }
+
+        .post-body .kg-btn-outline:hover {
+            background: var(--accent);
+            color: var(--paper);
+        }
+
+        /* ---- INLINE CODE ---- */
+
+        .post-body :not(pre) code {
+            font-family: var(--mono);
+            font-size: 0.88em;
+            padding: 0.12em 0.4em;
+            background: var(--code-bg);
+            border: 1px solid var(--code-border);
+            border-radius: 3px;
+            color: var(--ink);
+        }
+
+        /* ---- CODE BLOCK (same warm style as inline) ---- */
+
+        .post-body pre {
+            margin: 2rem 0;
+            padding: 1.2rem 1.4rem;
+            background: var(--code-bg);
+            border: 1px solid var(--code-border);
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: var(--ink);
+        }
+
+        .post-body pre code {
+            font-family: inherit;
+            font-size: inherit;
+            padding: 0;
+            background: none;
+            border: none;
+            border-radius: 0;
+            color: inherit;
+        }
+
+        /* ---- EMBED ---- */
+
+        .post-body .kg-embed-card {
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .post-body .kg-embed-card iframe {
+            width: 100%;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .post-body .kg-embed-card > :where(iframe[src*="youtube.com"], iframe[src*="youtube-nocookie.com"], iframe[src*="vimeo.com"]) {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        .embed-placeholder {
+            width: 100%;
+            background: var(--paper-warm);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .embed-placeholder .embed-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.3;
+        }
+
+        .embed-placeholder span {
+            display: block;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--ink-light);
+        }
+
+        /* ---- AUDIO CARD ---- */
+
+        .post-body .kg-audio-card {
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            background: var(--paper-warm);
+            border-radius: 4px;
+            border: 1px solid var(--rule);
+        }
+
+        .kg-audio-play {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .kg-audio-play-icon {
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 11px solid var(--paper);
+            margin-left: 2px;
+        }
+
+        .kg-audio-info { flex-shrink: 0; }
+
+        .kg-audio-title {
+            font-family: var(--ui);
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .kg-audio-duration {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--ink-light);
+        }
+
+        .kg-audio-bar {
+            flex: 1;
+            height: 4px;
+            background: var(--rule);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .kg-audio-bar-fill {
+            position: absolute;
+            left: 0; top: 0;
+            height: 100%; width: 35%;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* ---- VIDEO CARD ---- */
+
+        .post-body .kg-video-card { margin: 2rem 0; }
+
+        .kg-video-container {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .kg-video-play {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(44, 40, 32, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .kg-video-play:hover { background: rgba(44, 40, 32, 0.9); }
+
+        .kg-video-play-icon {
+            width: 0;
+            height: 0;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-left: 14px solid var(--paper);
+            margin-left: 3px;
+        }
+
+        /* ---- FILE CARD ---- */
+
+        .post-body .kg-file-card { margin: 2rem 0; }
+
+        .post-body .kg-file-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color 0.2s;
+        }
+
+        .post-body .kg-file-container:hover {
+            border-color: var(--ink-faint);
+            text-decoration: none;
+        }
+
+        .kg-file-icon { font-size: 1.5rem; color: var(--ink-light); flex-shrink: 0; }
+
+        .kg-file-info { flex: 1; }
+
+        .kg-file-title {
+            font-family: var(--ui);
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .kg-file-meta {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--ink-light);
+        }
+
+        .kg-file-download {
+            font-family: var(--ui);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* ---- TABLE ---- */
+
+        .post-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-family: var(--ui);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .post-body thead th {
+            text-align: left;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink-medium);
+            border-bottom: 2px solid var(--rule);
+        }
+
+        .post-body tbody td {
+            padding: 0.55rem 0.8rem;
+            border-bottom: 1px solid var(--rule);
+            color: var(--ink);
+        }
+
+        .post-body tbody tr:last-child td { border-bottom: none; }
+
+        /* ---- STYLE GUIDE SECTION LABELS ---- */
+
+        .sg-label {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 3.5rem 0 0.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed var(--rule);
+        }
+
+        .sg-label:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+
+        /* ---- SITE FOOTER ---- */
+
+        .site-footer {
+            max-width: var(--stream-width);
+            margin: 0 auto;
+            padding: 3rem 0 4rem;
+            border-top: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .footer-hedera {
+            font-size: 1.4rem;
+            color: var(--ink-faint);
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--body);
+            font-size: 0.98rem;
+            font-style: italic;
+            color: var(--ink-medium);
+            margin-bottom: 1.8rem;
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 1.2rem; }
+
+        .footer-links a {
+            font-family: var(--ui);
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--ink); }
+        .footer-separator { color: var(--ink-faint); font-size: 0.7rem; }
+
+        /* ---- RESPONSIVE ---- */
+
+        @media (max-width: 740px) {
+            html { font-size: 17px; }
+            .post { padding: 2.2rem 0; }
+            .post-header { margin-left: 0; }
+
+            .post-reading { grid-template-columns: 1fr; gap: 0; }
+
+            .post-margin {
+                display: flex;
+                align-items: baseline;
+                gap: 0.35rem;
+                margin-bottom: 0.8rem;
+                padding-top: 0 !important;
+            }
+
+            .post-manicule { font-size: 1rem; margin-bottom: 0; }
+            .post-essay .post-title { font-size: 1.8rem; }
+
+            .post-body .kg-image-card.kg-width-wide,
+            .post-body .kg-gallery-card.kg-width-wide {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .post-body .kg-image-card.kg-width-full {
+                margin-left: calc(-50vw + 50%);
+            }
+
+            .post-body .kg-bookmark-container {
+                flex-direction: column;
+            }
+
+            .post-body .kg-bookmark-thumbnail {
+                width: 100%;
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="#" class="site-title">A Broad Margin</a>
+        <div class="site-byline">by <a href="#">Chris McPhee</a></div>
+    </header>
+
+    <main class="stream">
+
+        <article class="post post-essay">
+            <div class="post-header">
+                <h2 class="post-title"><a href="#">Style Guide: Every Ghost Content Element</a></h2>
+            </div>
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Feb 14</time>
+                </div>
+                <div class="post-body">
+
+                    <div class="sg-label">Paragraph &amp; Inline Formatting</div>
+
+                    <p>This is a standard paragraph in Crimson Pro at 1.16rem. It should feel like reading a well-typeset book — warm, unhurried, the kind of text you settle into. The line-height is 1.72, generous enough for the eye to rest between lines without losing its place.</p>
+
+                    <p>This paragraph has <strong>bold text</strong>, <em>italic text</em>, <s>struck-through text</s>, and a <a href="#">hyperlink to somewhere</a>. There's also <code>inline code</code> for when you need to reference a variable or a <code>file-name.md</code> in the middle of prose.</p>
+
+                    <div class="sg-label">Headings</div>
+
+                    <h2>Heading 2 — Section Title</h2>
+                    <p>The h2 uses DM Sans Light at 1.7rem. For major sections within an essay.</p>
+
+                    <h3>Heading 3 — Subsection</h3>
+                    <p>The h3 uses DM Sans Light at 1.35rem. Quieter, for breaking up longer sections.</p>
+
+                    <h4>Heading 4 — The Label</h4>
+                    <p>The h4 flips to DM Sans, small caps, uppercase. Functions as a label or category marker.</p>
+
+                    <div class="sg-label">Blockquote</div>
+
+                    <blockquote>
+                        <p>I love a broad margin to my life. Sometimes, in a summer morning, having taken my accustomed bath, I sat in my sunny doorway from sunrise till noon, rapt in a revery, amidst the pines and hickories and sumachs, in undisturbed solitude and stillness.</p>
+                    </blockquote>
+
+                    <p>Terracotta left border, italic, muted. For quoting others.</p>
+
+                    <div class="sg-label">Pullquote (Blockquote Alt)</div>
+
+                    <blockquote class="kg-blockquote-alt">
+                        <p>The divergent mind needs convergent systems.</p>
+                    </blockquote>
+
+                    <p>Ghost's "blockquote alt" — centered, Crimson Pro italic, no border. For pulling out your own words. Select a blockquote in the editor and click the alt style.</p>
+
+                    <div class="sg-label">Lists</div>
+
+                    <ul>
+                        <li>Unordered list item, which might run to two lines if you have something substantial to say</li>
+                        <li>A shorter item</li>
+                        <li>A third, with a <a href="#">link inside it</a></li>
+                    </ul>
+
+                    <ol>
+                        <li>Space is the feature</li>
+                        <li>Systems should create space, not consume it</li>
+                        <li>Meet people where they are</li>
+                        <li>Constraint is a gift</li>
+                        <li>Capture to release</li>
+                        <li>Inhabit, don't acquire</li>
+                    </ol>
+
+                    <div class="sg-label">Divider</div>
+
+                    <p>Text above the divider.</p>
+
+                    <hr>
+
+                    <p>Text below the divider. A thin warm rule, generous vertical space. A breath, not a wall.</p>
+
+                    <div class="sg-label">Image — Regular</div>
+
+                    <figure class="kg-image-card">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=534&fit=crop" alt="Mountain landscape at dawn">
+                        <figcaption>Caption in DM Sans. Explains the image or credits the source.</figcaption>
+                    </figure>
+
+                    <div class="sg-label">Image — Wide</div>
+
+                    <figure class="kg-image-card kg-width-wide">
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1000&h=667&fit=crop" alt="Sunlight through trees">
+                        <figcaption>Wide images extend equally on both sides. Left edge aligns with the manicule.</figcaption>
+                    </figure>
+
+                    <div class="sg-label">Image — Full</div>
+
+                    <figure class="kg-image-card kg-width-full">
+                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1600&h=686&fit=crop" alt="Foggy forest valley">
+                        <figcaption>Full-width images go edge to edge. Use sparingly.</figcaption>
+                    </figure>
+
+                    <div class="sg-label">Gallery</div>
+
+                    <figure class="kg-gallery-card">
+                        <div class="kg-gallery-container">
+                            <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600&h=600&fit=crop" alt="" style="aspect-ratio:1/1; width:100%; object-fit:cover; border-radius:2px;">
+                            <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600&h=600&fit=crop" alt="" style="aspect-ratio:1/1; width:100%; object-fit:cover; border-radius:2px;">
+                            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&h=600&fit=crop" alt="" style="aspect-ratio:1/1; width:100%; object-fit:cover; border-radius:2px;">
+                            <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=600&h=600&fit=crop" alt="" style="aspect-ratio:1/1; width:100%; object-fit:cover; border-radius:2px;">
+                        </div>
+                    </figure>
+
+                    <div class="sg-label">Gallery — Wide</div>
+
+                    <figure class="kg-gallery-card kg-width-wide">
+                        <div class="kg-gallery-container">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=600&fit=crop" alt="" style="aspect-ratio:1/1; width:100%; object-fit:cover; border-radius:2px;">
+                            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=600&fit=crop" alt="" style="aspect-ratio:1/1; width:100%; object-fit:cover; border-radius:2px;">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=600&fit=crop" alt="" style="aspect-ratio:1/1; width:100%; object-fit:cover; border-radius:2px;">
+                            <img src="https://images.unsplash.com/photo-1518173946687-a27e5fca3ee4?w=600&h=600&fit=crop" alt="" style="aspect-ratio:1/1; width:100%; object-fit:cover; border-radius:2px;">
+                        </div>
+                    </figure>
+
+                    <div class="sg-label">Callout Cards</div>
+
+                    <div class="kg-callout-card kg-callout-card-grey">
+                        <div class="kg-callout-emoji">&#128161;</div>
+                        <div class="kg-callout-text"><p>Grey callout. Good for tips, side notes. Emoji is optional.</p></div>
+                    </div>
+
+                    <div class="kg-callout-card kg-callout-card-accent">
+                        <div class="kg-callout-emoji">&#9758;</div>
+                        <div class="kg-callout-text"><p>Accent callout (terracotta). For core points.</p></div>
+                    </div>
+
+                    <div class="kg-callout-card kg-callout-card-yellow">
+                        <div class="kg-callout-emoji">&#9888;</div>
+                        <div class="kg-callout-text"><p>Yellow callout. Ghost offers grey, white, blue, green, yellow, red, pink, purple, and accent.</p></div>
+                    </div>
+
+                    <div class="kg-callout-card kg-callout-card-blue">
+                        <div class="kg-callout-text"><p>Blue callout, no emoji. Quieter aside.</p></div>
+                    </div>
+
+                    <div class="sg-label">Bookmark Cards (Rich Link Preview)</div>
+
+                    <p>With thumbnail and favicon:</p>
+
+                    <div class="kg-bookmark-card">
+                        <a class="kg-bookmark-container" href="https://craigmod.com/essays/walk_japan/" target="_blank" rel="noopener">
+                            <div class="kg-bookmark-content">
+                                <div class="kg-bookmark-title">Ridgeline &amp; Walking in Japan</div>
+                                <div class="kg-bookmark-description">On walking, books, photography, publishing, and the making of things in the physical and digital worlds. A longtime walker explores the old highways of Japan.</div>
+                                <div class="kg-bookmark-metadata">
+                                    <img class="kg-bookmark-icon" src="https://www.google.com/s2/favicons?domain=craigmod.com&sz=32" alt="">
+                                    <span>craigmod.com</span>
+                                </div>
+                            </div>
+                            <div class="kg-bookmark-thumbnail">
+                                <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=360&h=240&fit=crop" alt="">
+                            </div>
+                        </a>
+                    </div>
+
+                    <p>Without thumbnail (some sites don't provide an og:image):</p>
+
+                    <div class="kg-bookmark-card">
+                        <a class="kg-bookmark-container" href="https://daringfireball.net" target="_blank" rel="noopener">
+                            <div class="kg-bookmark-content">
+                                <div class="kg-bookmark-title">Daring Fireball</div>
+                                <div class="kg-bookmark-description">By John Gruber. Macro-level observations on technology and its ever-expanding intersection with culture, from a design-minded perspective.</div>
+                                <div class="kg-bookmark-metadata">
+                                    <img class="kg-bookmark-icon" src="https://www.google.com/s2/favicons?domain=daringfireball.net&sz=32" alt="">
+                                    <span>daringfireball.net</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <p>Another with thumbnail:</p>
+
+                    <div class="kg-bookmark-card">
+                        <a class="kg-bookmark-container" href="https://www.robinsloan.com/lab/specifying-spring-physics/" target="_blank" rel="noopener">
+                            <div class="kg-bookmark-content">
+                                <div class="kg-bookmark-title">Specifying Spring Physics in CSS</div>
+                                <div class="kg-bookmark-description">Robin Sloan on bringing spring-based animation to the web. A detailed exploration of how physical metaphors can improve interface design.</div>
+                                <div class="kg-bookmark-metadata">
+                                    <img class="kg-bookmark-icon" src="https://www.google.com/s2/favicons?domain=robinsloan.com&sz=32" alt="">
+                                    <span>robinsloan.com</span>
+                                </div>
+                            </div>
+                            <div class="kg-bookmark-thumbnail">
+                                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=360&h=240&fit=crop" alt="">
+                            </div>
+                        </a>
+                    </div>
+
+                    <p>Without thumbnail, no favicon available:</p>
+
+                    <div class="kg-bookmark-card">
+                        <a class="kg-bookmark-container" href="https://thedesignsquiggle.com" target="_blank" rel="noopener">
+                            <div class="kg-bookmark-content">
+                                <div class="kg-bookmark-title">The Design Squiggle by Damien Newman</div>
+                                <div class="kg-bookmark-description">The process of design is a journey from abstract to concrete, from ambiguity to clarity. The squiggle captures this perfectly.</div>
+                                <div class="kg-bookmark-metadata">
+                                    <span>thedesignsquiggle.com</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="sg-label">Toggle / Accordion</div>
+
+                    <div class="kg-toggle-card">
+                        <div class="kg-toggle-heading">
+                            <span>What does "the divergent mind needs convergent systems" mean?</span>
+                            <div class="kg-toggle-arrow"></div>
+                        </div>
+                        <div class="kg-toggle-content">
+                            <p>Divergent minds generate constantly — ideas, connections, possibilities. Without convergent systems to catch, sort, and surface that output, the energy dissipates. Building the systems IS the creative work.</p>
+                        </div>
+                    </div>
+
+                    <div class="kg-toggle-card">
+                        <div class="kg-toggle-heading">
+                            <span>Why is this called A Broad Margin?</span>
+                            <div class="kg-toggle-arrow"></div>
+                        </div>
+                        <div class="kg-toggle-content">
+                            <p>From Thoreau's <em>Walden</em>: "I love a broad margin to my life." Thoreau meant leaving room for the unplanned — space to think, wander, notice.</p>
+                        </div>
+                    </div>
+
+                    <div class="sg-label">Buttons</div>
+
+                    <div class="kg-button-card kg-align-center">
+                        <a href="#" class="kg-btn kg-btn-accent">Filled Button</a>
+                    </div>
+
+                    <div class="kg-button-card kg-align-center" style="margin-top: 1rem;">
+                        <a href="#" class="kg-btn kg-btn-outline">Outline Button</a>
+                    </div>
+
+                    <div class="sg-label">Code Block</div>
+
+                    <pre><code>// The divergent mind needs convergent systems
+function buildSystem(mind) {
+  const captured = mind.generate();    // always producing
+  const sorted = converge(captured);   // the hard part
+  return inhabit(sorted);              // not acquire
+}</code></pre>
+
+                    <div class="sg-label">YouTube Embed</div>
+
+                    <div class="kg-embed-card">
+                        <iframe width="100%" src="https://www.youtube.com/embed/cxxIN6fyj58" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="no-referrer-when-downgrade" allowfullscreen style="aspect-ratio: 16/9; border-radius: 4px;"></iframe>
+                    </div>
+
+                    <div class="sg-label">SoundCloud Embed</div>
+
+                    <div class="kg-embed-card">
+                        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/tycho/infinite-burning-man-sunrise-2024&color=%239b6a4a&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style="border-radius: 4px;"></iframe>
+                    </div>
+
+                    <div class="sg-label">Audio Card (Uploaded File)</div>
+
+                    <div class="kg-audio-card">
+                        <div class="kg-audio-play">
+                            <div class="kg-audio-play-icon"></div>
+                        </div>
+                        <div class="kg-audio-info">
+                            <div class="kg-audio-title">Field Recording — Colonsay Beach</div>
+                            <div class="kg-audio-duration">3:42</div>
+                        </div>
+                        <div class="kg-audio-bar">
+                            <div class="kg-audio-bar-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="sg-label">Video Card (Uploaded File)</div>
+
+                    <div class="kg-video-card">
+                        <div class="kg-video-container">
+                            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=960&h=540&fit=crop" alt="" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:block;">
+                            <div class="kg-video-play">
+                                <div class="kg-video-play-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sg-label">File Card (Download)</div>
+
+                    <div class="kg-file-card">
+                        <a class="kg-file-container" href="#">
+                            <div class="kg-file-info">
+                                <div class="kg-file-title">Brain Operating Manual v2.pdf</div>
+                                <div class="kg-file-meta">PDF &middot; 2.4 MB</div>
+                            </div>
+                            <div class="kg-file-download">Download &darr;</div>
+                        </a>
+                    </div>
+
+                    <div class="sg-label">Table</div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Old Frame</th>
+                                <th>New Frame</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>I'm creative <em>despite</em> my challenges</td>
+                                <td>The challenges and creativity are the same phenomenon</td>
+                            </tr>
+                            <tr>
+                                <td>External tools are crutches</td>
+                                <td>External tools are system architecture</td>
+                            </tr>
+                            <tr>
+                                <td>I need coping strategies</td>
+                                <td>I'm designing for a specific user (me)</td>
+                            </tr>
+                            <tr>
+                                <td>There's something to fix</td>
+                                <td>There's something to build</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>That's the full palette. Every element Ghost gives you, styled for warm paper. <a href="#" class="post-endmark" title="Permalink">&#9670;</a></p>
+
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-hedera">&#10087;</div>
+        <div class="footer-tagline">Observations from the white space.</div>
+        <div class="footer-links">
+            <a href="#">Subscribe</a>
+            <span class="footer-separator">&middot;</span>
+            <a href="#">RSS</a>
+            <span class="footer-separator">&middot;</span>
+            <a href="#">About</a>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+/* ============================================
+   A BROAD MARGIN — Stream Layout + Post Types
+   ============================================ */
+
+/* ---- STREAM ---- */
+
+.stream {
+    max-width: var(--stream-width);
+    margin: 0 auto;
+}
+
+/* ---- POST (shared) ---- */
+
+.post {
+    padding: 2.8rem 0;
+    border-top: 1px solid var(--rule);
+}
+
+.post-header {
+    margin-left: calc(var(--margin-width) + var(--margin-gap));
+}
+
+.post-reading {
+    display: grid;
+    grid-template-columns: var(--margin-width) 1fr;
+    gap: 0 var(--margin-gap);
+    overflow: visible;
+}
+
+.post-body {
+    overflow: visible;
+    min-width: 0;
+}
+
+/* ---- THE MARGIN ---- */
+
+.post-margin { padding-top: 0.62rem; }
+
+.post-manicule {
+    font-size: 1.15rem;
+    line-height: 1;
+    color: var(--ink-light);
+    margin-bottom: -0.35rem;
+}
+
+.post-date {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--ink-light);
+    letter-spacing: 0.01em;
+    line-height: 1;
+}
+
+/* ---- HIDDEN PERMALINK (for endmark JS) ---- */
+
+.post-permalink { display: none; }
+
+/* ---- ESSAY POST ---- */
+
+.post-essay .post-title {
+    font-family: var(--display);
+    font-size: 2.2rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+}
+
+.post-essay .post-title a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.post-essay .post-title a:hover { color: var(--accent); }
+
+/* ---- LINK + EMBED POST VIA LINE ---- */
+
+.post-link .post-via,
+.post-embed .post-via {
+    font-family: var(--ui);
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    margin-bottom: 1.2rem;
+}
+
+.post-link .post-via a,
+.post-embed .post-via a {
+    color: var(--ink-medium);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.post-link .post-via a:hover,
+.post-embed .post-via a:hover { color: var(--accent); }
+
+.post-link .post-via .arrow-out,
+.post-embed .post-via .arrow-out {
+    color: var(--ink-light);
+    font-size: 0.9em;
+    margin-left: 0.1em;
+}
+
+/* ---- OBSERVATION POST ---- */
+
+.post-observation .post-body p {
+    font-size: 1.24rem;
+    line-height: 1.68;
+}
+
+/* ---- PHOTO POST ---- */
+
+.post-photo .post-margin { padding-top: 0; }
+
+.post-photo .post-image {
+    margin-bottom: 1rem;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.post-photo .post-image img {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+}
+
+.post-photo .post-image-wide {
+    width: calc(100% + var(--wide-extend) * 2);
+    margin-left: calc(-1 * var(--wide-extend));
+    margin-bottom: 1rem;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.post-photo .post-image-wide img {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+}
+
+.post-photo .post-caption {
+    font-family: var(--ui);
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--ink-medium);
+    line-height: 1.55;
+}
+
+/* ---- EMBED POST ---- */
+
+.post-embed .embed-wrapper {
+    margin: 1.5rem 0 0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.post-embed .embed-wrapper iframe {
+    width: 100%;
+    display: block;
+    border: none;
+}
+
+/* ---- POST NAV (single post prev/next) ---- */
+
+.post-nav {
+    max-width: var(--stream-width);
+    margin: 0 auto;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--ui);
+    font-size: 0.82rem;
+}
+
+.post-nav a {
+    color: var(--ink-medium);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.post-nav a:hover { color: var(--ink); }
+
+.post-nav .post-nav-next { margin-left: auto; }
+
+/* ---- RESPONSIVE ---- */
+
+@media (max-width: 740px) {
+    .post { padding: 2.2rem 0; }
+    .post-header { margin-left: 0; }
+
+    .post-reading {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .post-margin {
+        display: flex;
+        align-items: baseline;
+        gap: 0.35rem;
+        margin-bottom: 0.8rem;
+        padding-top: 0 !important;
+    }
+
+    .post-manicule {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+
+    .post-essay .post-title { font-size: 1.8rem; }
+
+    .post-photo .post-image-wide {
+        width: 100%;
+        margin-left: 0;
+    }
+}

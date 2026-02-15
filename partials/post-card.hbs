@@ -1,0 +1,29 @@
+{{!-- Post Card Dispatcher
+     Wraps each post in article with type class, dispatches to type partial --}}
+
+{{#has tag="#photo"}}
+    <article class="post post-photo">
+        <a class="post-permalink" href="{{url}}"></a>
+        {{> "post-types/photo"}}
+    </article>
+{{else if (has tag="#observation")}}
+    <article class="post post-observation">
+        <a class="post-permalink" href="{{url}}"></a>
+        {{> "post-types/observation"}}
+    </article>
+{{else if (has tag="#link")}}
+    <article class="post post-link">
+        <a class="post-permalink" href="{{url}}"></a>
+        {{> "post-types/link"}}
+    </article>
+{{else if (has tag="#embed")}}
+    <article class="post post-embed">
+        <a class="post-permalink" href="{{url}}"></a>
+        {{> "post-types/embed"}}
+    </article>
+{{else}}
+    <article class="post post-essay">
+        <a class="post-permalink" href="{{url}}"></a>
+        {{> "post-types/essay"}}
+    </article>
+{{/has}}

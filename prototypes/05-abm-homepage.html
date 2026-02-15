@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Broad Margin — Prototype 05e: Crimson Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           A BROAD MARGIN — Design Prototype 05e
+           TYPOGRAPHY VARIANT: Crimson Pro
+
+           Changes from 05:
+           - Headlines: DM Sans Light (300), smaller + tracked out
+           - Body: Crimson Pro (Garamond lineage, screen-optimized)
+           - Book-inspired: quiet sans headings, warm serif body
+           ============================================ */
+
+        :root {
+            --paper:        #faf7f2;
+            --paper-warm:   #f3efe8;
+            --ink:          #2c2820;
+            --ink-medium:   #5c564e;
+            --ink-light:    #8a847c;
+            --ink-faint:    #c4bfb8;
+            --rule:         #ddd8d0;
+            --accent:       #9b6a4a;
+            --accent-hover: #7a4f35;
+            --accent-bg:    rgba(155, 106, 74, 0.06);
+
+            --display:  'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --body:     'Crimson Pro', Georgia, 'Times New Roman', serif;
+            --ui:       'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --mono:     'DM Mono', 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+
+            --content-width: 620px;
+            --margin-width: 72px;
+            --margin-gap: 1.5rem;
+            --stream-width: calc(var(--margin-width) + var(--margin-gap) + var(--content-width));
+            --wide-extend: calc(var(--margin-width) + var(--margin-gap));
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: clip;
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: var(--body);
+            line-height: 1.72;
+            padding: 0 1.5rem;
+        }
+
+        /* ---- SITE HEADER ---- */
+
+        .site-header {
+            max-width: var(--stream-width);
+            margin: 0 auto;
+            padding: 3.5rem 0 2.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .site-title {
+            font-family: var(--display);
+            font-size: 1.45rem;
+            font-weight: 300;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .site-title:hover { color: var(--accent); }
+
+        .site-byline {
+            font-family: var(--ui);
+            font-size: 0.78rem;
+            font-weight: 400;
+            color: var(--ink-light);
+        }
+
+        .site-byline a {
+            color: var(--ink-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .site-byline a:hover { color: var(--ink); }
+
+        /* ---- STREAM ---- */
+
+        .stream { max-width: var(--stream-width); margin: 0 auto; }
+
+        /* ---- POST (shared) ---- */
+
+        .post {
+            padding: 2.8rem 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .post-header {
+            margin-left: calc(var(--margin-width) + var(--margin-gap));
+        }
+
+        .post-reading {
+            display: grid;
+            grid-template-columns: var(--margin-width) 1fr;
+            gap: 0 var(--margin-gap);
+            overflow: visible;
+        }
+
+        .post-body { overflow: visible; min-width: 0; }
+
+        /* ---- THE MARGIN ---- */
+
+        .post-margin { padding-top: 0.62rem; }
+
+        .post-manicule {
+            font-size: 1.15rem;
+            line-height: 1;
+            color: var(--ink-light);
+            margin-bottom: -0.35rem;
+        }
+
+        .post-date {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            font-weight: 400;
+            color: var(--ink-light);
+            letter-spacing: 0.01em;
+            line-height: 1;
+        }
+
+        /* ---- POST BODY ---- */
+
+        .post-body p {
+            margin-bottom: 1.35rem;
+            font-size: 1.16rem;
+            line-height: 1.72;
+        }
+
+        .post-body p:last-child { margin-bottom: 0; }
+
+        .post-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: var(--ink-faint);
+            transition: text-decoration-color 0.2s;
+        }
+
+        .post-body a:hover { text-decoration-color: var(--accent); }
+
+        /* Blockquote */
+        .post-body blockquote {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.3rem;
+            margin: 1.8rem 0;
+            color: var(--ink-medium);
+            font-style: italic;
+        }
+
+        .post-body blockquote:first-child { margin-top: 0; }
+
+        .post-body blockquote p { color: var(--ink-medium); font-size: 1.1rem; }
+
+        .post-body strong { font-weight: 600; }
+        .post-body em { font-style: italic; }
+
+        /* ---- INLINE END MARK ---- */
+
+        .post-body a.post-endmark {
+            color: var(--ink-faint);
+            text-decoration: none;
+            font-size: 0.8em;
+            margin-left: 0.25em;
+            vertical-align: 0.03em;
+            transition: color 0.2s;
+        }
+
+        .post-body a.post-endmark:hover { color: var(--accent); text-decoration: none; }
+
+        /* ---- ESSAY POST ---- */
+
+        .post-essay .post-title {
+            font-family: var(--display);
+            font-size: 2.2rem;
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--ink);
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-essay .post-title a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .post-essay .post-title a:hover { color: var(--accent); }
+
+        /* ---- LINK POST ---- */
+
+        .post-link .post-via,
+        .post-embed .post-via {
+            font-family: var(--ui);
+            font-size: 0.78rem;
+            color: var(--ink-light);
+            margin-bottom: 1.2rem;
+        }
+
+        .post-link .post-via a,
+        .post-embed .post-via a {
+            color: var(--ink-medium);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .post-link .post-via a:hover,
+        .post-embed .post-via a:hover { color: var(--accent); }
+
+        .post-link .post-via .arrow-out,
+        .post-embed .post-via .arrow-out {
+            color: var(--ink-light);
+            font-size: 0.9em;
+            margin-left: 0.1em;
+        }
+
+        /* Bookmark card at bottom of link posts */
+        .post-link .kg-bookmark-card {
+            margin: 1.5rem 0 0;
+        }
+
+        .kg-bookmark-container {
+            display: flex;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color 0.2s;
+        }
+
+        .kg-bookmark-container:hover { border-color: var(--ink-light); }
+
+        .kg-bookmark-content {
+            flex: 1;
+            padding: 1.1rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        .kg-bookmark-title {
+            font-family: var(--ui);
+            font-size: 0.92rem;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 0.3rem;
+            color: var(--ink);
+        }
+
+        .kg-bookmark-description {
+            font-family: var(--ui);
+            font-size: 0.78rem;
+            color: var(--ink-medium);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .kg-bookmark-metadata {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--ink-light);
+        }
+
+        .kg-bookmark-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+        }
+
+        .kg-bookmark-thumbnail {
+            width: 180px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .kg-bookmark-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ---- OBSERVATION POST ---- */
+
+        .post-observation .post-body p {
+            font-size: 1.24rem;
+            line-height: 1.68;
+        }
+
+        /* ---- PHOTO POST ---- */
+
+        .post-photo .post-margin { padding-top: 0; }
+
+        .post-photo .post-image {
+            margin-bottom: 1rem;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .post-photo .post-image img {
+            width: 100%;
+            display: block;
+            border-radius: 2px;
+        }
+
+        .post-photo .post-image-wide {
+            width: calc(100% + var(--wide-extend) * 2);
+            margin-left: calc(-1 * var(--wide-extend));
+            margin-bottom: 1rem;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .post-photo .post-image-wide img {
+            width: 100%;
+            display: block;
+            border-radius: 2px;
+        }
+
+        .post-photo .post-caption {
+            font-family: var(--ui);
+            font-size: 0.88rem;
+            font-weight: 400;
+            color: var(--ink-medium);
+            line-height: 1.55;
+        }
+
+        /* ---- EMBED POST ---- */
+
+        .post-embed .embed-wrapper {
+            margin: 1.5rem 0 0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .post-embed .embed-wrapper iframe {
+            width: 100%;
+            display: block;
+            border: none;
+        }
+
+        /* ---- IMAGES WITHIN POST BODY ---- */
+
+        .post-body .kg-image-card { margin: 2rem 0; }
+        .post-body .kg-image-card img { width: 100%; border-radius: 2px; display: block; }
+
+        .post-body .kg-image-card.kg-width-wide {
+            width: calc(100% + var(--wide-extend) * 2);
+            margin-left: calc(-1 * var(--wide-extend));
+        }
+
+        .post-body figcaption {
+            padding: 0.6rem 0 0;
+            font-family: var(--ui);
+            font-size: 0.78rem;
+            color: var(--ink-light);
+            line-height: 1.4;
+        }
+
+        /* ---- PAGINATION ---- */
+
+        .pagination {
+            max-width: var(--stream-width);
+            margin: 0 auto;
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--rule);
+            display: flex;
+            justify-content: center;
+        }
+
+        .pagination a {
+            font-family: var(--ui);
+            font-size: 0.82rem;
+            color: var(--ink-medium);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .pagination a:hover { color: var(--ink); }
+
+        /* ---- SITE FOOTER ---- */
+
+        .site-footer {
+            max-width: var(--stream-width);
+            margin: 0 auto;
+            padding: 3rem 0 4rem;
+            border-top: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .footer-hedera {
+            font-size: 1.4rem;
+            color: var(--ink-faint);
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--body);
+            font-size: 0.98rem;
+            font-style: italic;
+            color: var(--ink-medium);
+            margin-bottom: 1.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .footer-links a {
+            font-family: var(--ui);
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--ink); }
+
+        .footer-separator {
+            color: var(--ink-faint);
+            font-size: 0.7rem;
+        }
+
+        /* ---- RESPONSIVE ---- */
+
+        @media (max-width: 740px) {
+            html { font-size: 17px; }
+            .post { padding: 2.2rem 0; }
+            .post-header { margin-left: 0; }
+
+            .post-reading {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .post-margin {
+                display: flex;
+                align-items: baseline;
+                gap: 0.35rem;
+                margin-bottom: 0.8rem;
+                padding-top: 0 !important;
+            }
+
+            .post-manicule {
+                font-size: 1rem;
+                margin-bottom: 0;
+            }
+
+            .site-header {
+                padding: 2rem 0 2rem;
+            }
+
+            .site-title { font-size: 1.3rem; }
+
+            .post-essay .post-title { font-size: 1.8rem; }
+
+            .post-photo .post-image-wide {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .post-body .kg-image-card.kg-width-wide {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .kg-bookmark-thumbnail {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======== SITE HEADER ======== -->
+    <header class="site-header">
+        <a href="#" class="site-title">A Broad Margin</a>
+        <div class="site-byline">by <a href="about.html">Chris McPhee</a></div>
+    </header>
+
+    <!-- ======== THE STREAM ======== -->
+    <main class="stream">
+
+        <!-- ======== 1. ESSAY &#8212; Real published post ======== -->
+        <article class="post post-essay">
+            <div class="post-header">
+                <h2 class="post-title"><a href="#/a-broad-margin">A broad margin</a></h2>
+            </div>
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 29</time>
+                </div>
+                <div class="post-body">
+                    <p>On June 1, 2013 I registered this domain. That was 4,626 days ago. I had big plans. Well, maybe not big plans but <em>plaaaans</em>. Plans to write about something, I wasn&#8217;t even sure what.</p>
+
+                    <p>I just liked the phrase. It comes from Thoreau: &#8220;I love a broad margin to my life.&#8221; I think I understood what he meant? But it didn&#8217;t even matter, it evoked a feeling.</p>
+
+                    <p>Or something.</p>
+
+                    <p>However, dear reader, as you might have guessed, I didn&#8217;t write shit. I didn&#8217;t post a damn thing.</p>
+
+                    <p>Until now.</p>
+
+                    <p>Every year the renewal notice came. Every year I paid it. Along with the other 1500 domains I&#8217;ve been hoarding for years with no real project in sight. (It&#8217;s a whole thing. Don&#8217;t get me started.)</p>
+
+                    <p>I&#8217;d think: ohh maybe this year. Then I&#8217;d forget about it for another twelve months.</p>
+
+                    <p>I could&#8217;ve let it go. Probably should have. But I couldn&#8217;t. The phrase was doing something for me just sitting there, even empty.</p>
+
+                    <p>Especially empty.</p>
+
+                    <p>A broad margin. Room that isn&#8217;t filled yet. Space you protect without knowing why. The permission to not have it all figured out.</p>
+
+                    <p>Maybe that&#8217;s what I was keeping. A little corner of the internet held open for&#8230; I don&#8217;t know. For whenever I was ready, I guess. For whenever I stopped just having ideas and started doing them.</p>
+
+                    <p>Twelve years of holding space for something I couldn&#8217;t name.</p>
+
+                    <p>And now here I am, writing something. Finally. I&#8217;m not going to pretend I have a grand vision. I don&#8217;t even know what this becomes. I just know I couldn&#8217;t keep the domain for another year without putting something in it.</p>
+
+                    <p>So this is it. The margin, no longer empty. Or maybe still empty &#8212; just with me sitting in it now, looking around.</p>
+
+                    <p>We&#8217;ll see what happens. <a href="#/a-broad-margin" class="post-endmark" title="Permalink">&#9670;</a></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 2. OBSERVATION ======== -->
+        <article class="post post-observation">
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 27</time>
+                </div>
+                <div class="post-body">
+                    <p>The best notebooks are the ones you&#8217;ve ruined. Coffee rings. Bent corners. Ink bleeding through from the other side. A pristine notebook is just anxiety in paper form. <a href="#/ruined-notebooks" class="post-endmark" title="Permalink">&#9670;</a></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 3. LINK &#8212; tools for thought ======== -->
+        <article class="post post-link">
+            <div class="post-header">
+                <div class="post-via">via <a href="#">everythingisamodel.com<span class="arrow-out"> &#8599;</span></a></div>
+            </div>
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 25</time>
+                </div>
+                <div class="post-body">
+                    <blockquote>
+                        <p>The real tool for thought isn&#8217;t the note-taking app. It&#8217;s the constraint you impose on yourself &#8212; the decision to write at all, to name the thing, to give it edges so it can be handled.</p>
+                    </blockquote>
+                    <p>This is the piece I wish I&#8217;d written. The whole tools-for-thought space has become a way to prepare for thinking instead of thinking. You know the type &#8212; forty plugins, a hundred templates, graph views that look like a nervous system, zero published words. The tool becomes a world you inhabit instead of the work. <a href="#/tools-for-thought" class="post-endmark" title="Permalink">&#9670;</a></p>
+                    <figure class="kg-bookmark-card">
+                        <a class="kg-bookmark-container" href="#">
+                            <div class="kg-bookmark-content">
+                                <div class="kg-bookmark-title">Tools for Thought Are Not What You Think</div>
+                                <div class="kg-bookmark-description">The real tool for thought isn&#8217;t the note-taking app. It&#8217;s the constraint you impose on yourself &#8212; the decision to write at all, to name the thing, to give it edges.</div>
+                                <div class="kg-bookmark-metadata">
+                                    <img class="kg-bookmark-icon" src="https://www.google.com/s2/favicons?domain=everythingisamodel.com&sz=32" alt="">
+                                    <span>everythingisamodel.com</span>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 4. PHOTO ======== -->
+        <article class="post post-photo">
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 23</time>
+                </div>
+                <div class="post-body">
+                    <div class="post-image-wide">
+                        <img src="https://images.unsplash.com/photo-1491002052546-bf38f186af56?w=1400&h=700&fit=crop&crop=center" alt="Frost on bare branches against a pale winter sky">
+                    </div>
+                    <p class="post-caption">Frost on the canal path this morning. &#8722;22 and everything is crystallized, sharpened, impossibly still. Ottawa does this thing in January where the air itself becomes visible &#8212; your breath, the chimney smoke, the heat escaping a coffee lid. Everything is announcing its own warmth. <a href="#/frost-canal" class="post-endmark" title="Permalink">&#9670;</a></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 5. ESSAY ======== -->
+        <article class="post post-essay">
+            <div class="post-header">
+                <h2 class="post-title"><a href="#/the-system-is-the-practice">The System Is the Practice</a></h2>
+            </div>
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 21</time>
+                </div>
+                <div class="post-body">
+                    <p>There&#8217;s a thing that happens when you build a system for yourself &#8212; a folder structure, a daily routine, a way of capturing ideas &#8212; where the building starts to feel like the work itself. And everyone around you (or the voice in your head, or the productivity internet) says: <em>stop building the system and just do the thing.</em></p>
+
+                    <p>But what if building the system <em>is</em> the thing?</p>
+
+                    <p>Not as avoidance. Not as procrastination dressed up in cargo pants. But as a genuine creative act &#8212; the act of looking at how you think, what you need, what breaks, and shaping the environment so the work can actually happen.</p>
+
+                    <p>A musician doesn&#8217;t just play. She tunes the instrument, chooses the room, sets the levels, decides whether the lights are on or off. That&#8217;s not preparation. That&#8217;s part of the music. The divergent mind that needs convergent systems isn&#8217;t failing to start &#8212; it&#8217;s doing a kind of work that isn&#8217;t legible as work. Not yet. <a href="#/the-system-is-the-practice" class="post-endmark" title="Permalink">&#9670;</a></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 6. OBSERVATION ======== -->
+        <article class="post post-observation">
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 19</time>
+                </div>
+                <div class="post-body">
+                    <p>Twelve hundred domains. At $15 a pop, that&#8217;s $18,000 a year in pure potential. The world&#8217;s most expensive collection of things I might do someday. Every one of them is a life I didn&#8217;t live, and I love them all. <a href="#/twelve-hundred-domains" class="post-endmark" title="Permalink">&#9670;</a></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 7. LINK &#8212; Craig Mod ======== -->
+        <article class="post post-link">
+            <div class="post-header">
+                <div class="post-via">via <a href="#">craigmod.com<span class="arrow-out"> &#8599;</span></a></div>
+            </div>
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 17</time>
+                </div>
+                <div class="post-body">
+                    <p>Craig Mod on the physical margin of a page &#8212; the space most people think is wasted, that publishers trim to cut costs, that designers fight to protect. The margin is where the reader lives. It&#8217;s where your thumb goes, your annotation goes, your eye rests between sentences. Remove the margin and the text becomes a wall.</p>
+
+                    <p>Thoreau&#8217;s broad margin wasn&#8217;t metaphorical. He literally meant: leave room. Don&#8217;t fill every hour. Don&#8217;t optimize every surface. The unscheduled afternoon isn&#8217;t inefficiency &#8212; it&#8217;s where the unexpected thought arrives. <a href="#/lets-talk-about-margins" class="post-endmark" title="Permalink">&#9670;</a></p>
+
+                    <figure class="kg-bookmark-card">
+                        <a class="kg-bookmark-container" href="#">
+                            <div class="kg-bookmark-content">
+                                <div class="kg-bookmark-title">Let&#8217;s Talk About Margins</div>
+                                <div class="kg-bookmark-description">Wherein we discuss the physical margin of a page &#8212; the white space around the text block that most people think is wasted, that publishers trim to cut costs, that designers fight to protect.</div>
+                                <div class="kg-bookmark-metadata">
+                                    <img class="kg-bookmark-icon" src="https://www.google.com/s2/favicons?domain=craigmod.com&sz=32" alt="">
+                                    <span>craigmod.com</span>
+                                </div>
+                            </div>
+                            <div class="kg-bookmark-thumbnail">
+                                <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=300&fit=crop&crop=center" alt="">
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 8. ESSAY &#8212; Boredom&#8217;s Gift ======== -->
+        <article class="post post-essay">
+            <div class="post-header">
+                <h2 class="post-title"><a href="#/boredoms-gift">Boredom&#8217;s Gift</a></h2>
+            </div>
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 15</time>
+                </div>
+                <div class="post-body">
+                    <p>My daughter is seven and she says &#8220;I&#8217;m bored&#8221; the way you&#8217;d report a medical emergency. Full volume, hands dragging down her face, an existential crisis in a body that weighs forty-five pounds. It is, according to her, the worst thing that has ever happened to anyone.</p>
+
+                    <p>I used to fix it. Every time. Hand her a screen, suggest a craft, offer to play a game. Anything to stop the suffering. But I&#8217;ve been watching what happens when I don&#8217;t.</p>
+
+                    <figure class="kg-image-card kg-width-wide">
+                        <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=1400&h=800&fit=crop&crop=center" alt="A child drawing with crayons on a large sheet of paper on the floor">
+                        <figcaption>The floor phase. This is where the good stuff starts.</figcaption>
+                    </figure>
+
+                    <p>First there&#8217;s the complaint. Then the flop &#8212; the full-body collapse onto the floor or the couch, all limbs, maximum drama. Then quiet. Then &#8212; and this is the part that kills me &#8212; she starts doing something. Not something I suggested. Something she found inside the boredom, like a door she didn&#8217;t know was there until she stopped banging on the walls.</p>
+
+                    <p>Yesterday it was an elaborate system of notes she was passing to herself, written in a code she invented on the spot. The day before, she rearranged every stuffed animal in her room by &#8220;personality type&#8221; and gave me a guided tour. These aren&#8217;t things I could have suggested because they don&#8217;t exist yet when she&#8217;s bored. They only exist on the other side of it.</p>
+
+                    <p>I think about this with my own relationship to boredom. The phone has made it nearly impossible to be bored. Every micro-moment of nothing &#8212; the elevator, the red light, the thirty seconds while the kettle boils &#8212; gets filled. Scroll, scroll, scroll. The mind never gets the complaint phase, so it never gets to the floor phase, and whatever is on the other side of that door stays locked.</p>
+
+                    <p>Boredom is not the absence of stimulation. It&#8217;s the presence of your own mind, unmediated, which turns out to be a very different thing. <a href="#/boredoms-gift" class="post-endmark" title="Permalink">&#9670;</a></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 9. LISTENING &#8212; matches link post pattern ======== -->
+        <article class="post post-embed">
+            <div class="post-header">
+                <div class="post-via">via <a href="#">soundcloud.com<span class="arrow-out"> &#8599;</span></a></div>
+            </div>
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 13</time>
+                </div>
+                <div class="post-body">
+                    <p>Tycho at sunrise, Burning Man, 2024. There&#8217;s something about music designed for a specific moment in a specific place &#8212; you can feel the dust and the horizon in it even through laptop speakers. It&#8217;s not a song you listen to. It&#8217;s a context that includes you. <a href="#/tycho-sunrise" class="post-endmark" title="Permalink">&#9670;</a></p>
+                    <div class="embed-wrapper">
+                        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1907498727&color=%239b6a4a&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 10. PHOTO ======== -->
+        <article class="post post-photo">
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 11</time>
+                </div>
+                <div class="post-body">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1200&h=800&fit=crop&crop=center" alt="Old library with warm light, shelves full of books">
+                    </div>
+                    <p class="post-caption">There&#8217;s a second-hand bookshop in the Glebe that smells like this looks. <a href="#/glebe-bookshop" class="post-endmark" title="Permalink">&#9670;</a></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 11. LINK &#8212; ontological design ======== -->
+        <article class="post post-link">
+            <div class="post-header">
+                <div class="post-via">via <a href="#">dfrnt.com<span class="arrow-out"> &#8599;</span></a></div>
+            </div>
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 9</time>
+                </div>
+                <div class="post-body">
+                    <p>The thing nobody talks about in software design is that every app is a theory of how you should think. A todo list with priorities is saying: you know what matters most. A calendar with hourly blocks is saying: your time is divisible into equal units. A note-taking app with a folder structure is saying: knowledge has a hierarchy. None of these are neutral. They&#8217;re worldviews wearing the costume of tools. <a href="#/ontological-design" class="post-endmark" title="Permalink">&#9670;</a></p>
+                    <figure class="kg-bookmark-card">
+                        <a class="kg-bookmark-container" href="#">
+                            <div class="kg-bookmark-content">
+                                <div class="kg-bookmark-title">Ontological Design: We Design Our Tools and Then Our Tools Design Us</div>
+                                <div class="kg-bookmark-description">How every designed artifact carries an implicit worldview, and how those worldviews shape the people who use them &#8212; often invisibly.</div>
+                                <div class="kg-bookmark-metadata">
+                                    <img class="kg-bookmark-icon" src="https://www.google.com/s2/favicons?domain=dfrnt.com&sz=32" alt="">
+                                    <span>dfrnt.com</span>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 12. OBSERVATION ======== -->
+        <article class="post post-observation">
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 7</time>
+                </div>
+                <div class="post-body">
+                    <p>The thing about quitting smoking on your 40th birthday is that you don&#8217;t actually quit on your 40th birthday. You quit years earlier, the day you decide <em>I am not a smoker after 40.</em> The birthday is just the ceremony. Your identity changed first. The behavior followed. Every hard change I&#8217;ve ever made worked this way: total, overnight, identity-first. The gradual ones never stuck. <a href="#/quitting-smoking" class="post-endmark" title="Permalink">&#9670;</a></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 13. ESSAY ======== -->
+        <article class="post post-essay">
+            <div class="post-header">
+                <h2 class="post-title"><a href="#/the-spiral-notebook">The Spiral Notebook</a></h2>
+            </div>
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 5</time>
+                </div>
+                <div class="post-body">
+                    <p>My dad kept a spiral notebook on the counter for forty years. Not a Moleskine. Not a bullet journal. A Hilroy spiral notebook, the kind you&#8217;d buy for school. When he needed a phone number, he wrote it down. When he needed to remember something from a conversation, he wrote it down. When the notebook filled up, he started a new one.</p>
+
+                    <p>There was no system. No index. No table of contents. If he needed to find something he&#8217;d flip through the pages. Sometimes he didn&#8217;t find it. That was fine. The notebook wasn&#8217;t a retrieval system &#8212; it was a presence system. Writing the thing down was the point. The act of putting pen to paper changed his relationship to the information. It went from floating to held.</p>
+
+                    <p>I think about his notebook every time I&#8217;m three hours deep into configuring a productivity app. He never once worried about his capture workflow. <a href="#/the-spiral-notebook" class="post-endmark" title="Permalink">&#9670;</a></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- ======== 14. PHOTO ======== -->
+        <article class="post post-photo">
+            <div class="post-reading">
+                <div class="post-margin">
+                    <div class="post-manicule">&#9758;</div>
+                    <time class="post-date">Jan 3</time>
+                </div>
+                <div class="post-body">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?w=1200&h=800&fit=crop&crop=center" alt="Misty mountain landscape at dawn with soft light">
+                    </div>
+                    <p class="post-caption">New year. Same mountains. Something about that is the whole point. <a href="#/new-year" class="post-endmark" title="Permalink">&#9670;</a></p>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- ======== PAGINATION ======== -->
+    <nav class="pagination">
+        <a href="#">Older posts &rarr;</a>
+    </nav>
+
+    <!-- ======== SITE FOOTER ======== -->
+    <footer class="site-footer">
+        <div class="footer-hedera">&#10087;</div>
+        <div class="footer-tagline">Observations from the white space.</div>
+        <div class="footer-links">
+            <a href="#">Subscribe</a>
+            <span class="footer-separator">&middot;</span>
+            <a href="#">RSS</a>
+            <span class="footer-separator">&middot;</span>
+            <a href="06-abm-about.html">About</a>
+        </div>
+    </footer>
+
+</body>
+</html>

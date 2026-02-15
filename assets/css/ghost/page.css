@@ -1,0 +1,131 @@
+/* ============================================
+   A BROAD MARGIN — Static Page Layout
+   ============================================ */
+
+.page {
+    max-width: var(--stream-width);
+    margin: 0 auto;
+    border-top: 1px solid var(--rule);
+    padding: 3rem 0;
+}
+
+.page-content {
+    margin-left: calc(var(--margin-width) + var(--margin-gap));
+}
+
+.page-content p {
+    margin-bottom: 1.35rem;
+    font-size: 1.16rem;
+    line-height: 1.72;
+}
+
+.page-content p:last-child { margin-bottom: 0; }
+
+.page-content a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--ink-faint);
+    transition: text-decoration-color 0.2s;
+}
+
+.page-content a:hover { text-decoration-color: var(--accent); }
+
+.page-content em { font-style: italic; }
+.page-content strong { font-weight: 600; }
+
+.page-content h2 {
+    font-family: var(--display);
+    font-size: 1.7rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 3rem 0 1rem;
+    letter-spacing: 0.02em;
+}
+
+.page-content h2:first-child { margin-top: 0; }
+
+.page-content h3 {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--ink);
+    margin: 2.2rem 0 0.8rem;
+}
+
+.page-content hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2.8rem 0;
+}
+
+.page-content blockquote {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.3rem;
+    margin: 1.8rem 0;
+    color: var(--ink-medium);
+    font-style: italic;
+}
+
+.page-content blockquote p {
+    color: var(--ink-medium);
+    font-size: 1.1rem;
+}
+
+.page-content .kg-blockquote-alt {
+    border-left: none;
+    text-align: center;
+    font-family: var(--body);
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.05;
+    color: var(--ink);
+    padding: 1rem 2rem;
+    margin: 2.5rem 0;
+}
+
+.page-content .kg-blockquote-alt p {
+    color: var(--ink);
+    font-size: inherit;
+}
+
+.page-content ul {
+    margin: 1.35rem 0;
+    padding-left: 1.6em;
+    font-size: 1.16rem;
+    line-height: 1.72;
+}
+
+.page-content li { margin-bottom: 0.4rem; }
+.page-content li::marker { color: var(--ink-light); }
+
+/* ---- COLOPHON ---- */
+
+.colophon {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+}
+
+.colophon h3 {
+    font-family: var(--ui);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1rem;
+}
+
+.colophon p {
+    font-size: 0.95rem !important;
+    color: var(--ink-medium);
+}
+
+/* ---- RESPONSIVE ---- */
+
+@media (max-width: 740px) {
+    .page-content { margin-left: 0; }
+}

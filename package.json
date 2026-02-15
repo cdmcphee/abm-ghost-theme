@@ -1,7 +1,6 @@
 {
-    "name": "ghost-starter-theme",
-    "description": "A starter theme for Ghost theme development",
-    "demo": "https://starter.ghost.io",
+    "name": "a-broad-margin",
+    "description": "A Broad Margin — personal publication theme",
     "version": "1.0.0",
     "engines": {
         "ghost": ">=5.0.0"
@@ -18,9 +17,8 @@
         "pretest": "npm run build"
     },
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org"
+        "name": "Chris McPhee",
+        "email": "chris@abroadmargin.com"
     },
     "gpm": {
         "type": "theme",

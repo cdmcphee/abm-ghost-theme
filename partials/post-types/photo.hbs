@@ -1,0 +1,25 @@
+{{!-- Photo Post Type — feature_image rendered inside post-body --}}
+
+<div class="post-reading">
+    <div class="post-margin">
+        <div class="post-manicule">&#9758;</div>
+        <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D"}}</time>
+    </div>
+    <div class="post-body">
+        {{#if feature_image}}
+            {{#has tag="#wide"}}
+            <div class="post-image-wide">
+                <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+            </div>
+            {{else}}
+            <div class="post-image">
+                <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+            </div>
+            {{/has}}
+            {{#if feature_image_caption}}
+            <p class="post-caption">{{{feature_image_caption}}}</p>
+            {{/if}}
+        {{/if}}
+        {{content}}
+    </div>
+</div>

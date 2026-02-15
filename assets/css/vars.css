@@ -1,35 +1,32 @@
-/* Variables
-/* ---------------------------------------------------------- */
+/* ============================================
+   A BROAD MARGIN — Design Tokens
+   ============================================ */
 
 :root {
+    /* Palette */
+    --paper:        #faf7f2;
+    --paper-warm:   #f3efe8;
+    --ink:          #2c2820;
+    --ink-medium:   #5c564e;
+    --ink-light:    #8a847c;
+    --ink-faint:    #c4bfb8;
+    --rule:         #ddd8d0;
+    --accent:       #9b6a4a;
+    --accent-hover: #7a4f35;
+    --accent-bg:    rgba(155, 106, 74, 0.06);
+    --code-bg:      #f0ebe4;
+    --code-border:  #e0dbd3;
 
-    /* Colours */
-    --color-primary: var(--ghost-accent-color, #3eb0ef);
-    --color-base: #131313;
-    --color-border: #ddd;
-    --color-bg: #f5f5f5;
-    --color-success: #80b912;
-    --color-error: #f05230;
+    /* Typography */
+    --display:  'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --body:     'Crimson Pro', Georgia, 'Times New Roman', serif;
+    --ui:       'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono:     'DM Mono', 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
 
-    /* Fonts */
-    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    --font-serif: Georgia, Times, serif;
-    --font-mono: Menlo, Courier, monospace;
-    --font-light: 100;
-    --font-normal: 400;
-    --font-bold: 700;
-    --font-heavy: 800;
-
-    /* Breakpoints */
-    --xlarge: 1680px;
-    --large: 1280px;
-    --medium: 980px;
-    --small: 740px;
-    --xsmall: 480px;
-
-    /* Sizes */
-    --height: 4rem;
-    --margin: 2rem;
-    --radius: 0.5rem;
-
+    /* Layout */
+    --content-width: 620px;
+    --margin-width: 72px;
+    --margin-gap: 1.5rem;
+    --stream-width: calc(var(--margin-width) + var(--margin-gap) + var(--content-width));
+    --wide-extend: calc(var(--margin-width) + var(--margin-gap));
 }
