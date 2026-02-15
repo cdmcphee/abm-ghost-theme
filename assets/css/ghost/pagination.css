@@ -11,6 +11,10 @@
     justify-content: center;
 }
 
+.pagination:not(:has(a)) {
+    display: none;
+}
+
 .pagination a {
     font-family: var(--ui);
     font-size: 0.82rem;
