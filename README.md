@@ -6,8 +6,6 @@ Custom theme for [abroadmargin.com](https://abroadmargin.com). Single-author pub
 
 Crimson Pro body, DM Sans Light headlines, DM Mono dates. Warm cream palette. Signature left-margin column with ☞ manicule and date on every post. Five post types differentiated by internal Ghost tags (`#essay`, `#observation`, `#link`, `#photo`, `#embed`).
 
-Design prototypes in `prototypes/`.
-
 ## Structure
 
 ```
